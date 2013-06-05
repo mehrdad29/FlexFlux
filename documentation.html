@@ -64,6 +64,8 @@
 								class="icon-chevron-right"></i> Condition file</a></li>
 						<li class="active"><a href="#int"><i
 								class="icon-chevron-right"></i> Interaction file</a></li>
+						<li class="active"><a href="#keywords"><i
+								class="icon-chevron-right"></i> Key words</a></li>
 					</ul>
 
 					<li class="active"><a href="#analysis"><i
@@ -360,6 +362,38 @@ IF[M_glc_D_b>0]THEN[lacZ=0.001]
 IF[M_glc_D_b=0]THEN[lacZ=0.03]
 
 IF[lacZ</pre>
+
+
+				<h3 id="keywords">Key words</h3>
+
+
+				<h4>Getting the summation of all fluxes</h4>
+
+				<p>
+					The key-word <b>FluxesSummation</b> can be used to get the sum of
+					the absolute values of all fluxes in the network.
+				</p>
+				<p>It can be used for instance as an objective function :</p>
+
+				<pre class="prettyprint linenums">obj : MIN(FluxesSummation)</pre>
+
+				<p>It can be also used as a constraint :</p>
+				<pre class="prettyprint linenums">FluxesSummation 0 3000</pre>
+
+				<h4>Getting the state of a gene-protein relation (GPR)</h4>
+
+				<p>
+					In the interaction file, <b>GPR_</b> placed in front of the name of
+					a reaction is a way of knowing if the genes specified in the sbml
+					file allow the reaction not to be equal to zero.
+				</p>
+
+				<p>Example :</p>
+
+				<pre class="prettyprint linenums">IF[GPR_R_glc]THEN[R_glc=1.5]</pre>
+
+				<p>This interaction means that if the reaction R_glc is not set
+					to zero by it's genes, then it's value must be 1.5</p>
 
 				<h2 id="analysis">Details of the analyses</h2>
 
