@@ -76,6 +76,8 @@
 								class="icon-chevron-right"></i> Dead reactions</a></li>
 						<li class="active"><a href="#rfba"><i
 								class="icon-chevron-right"></i> Time dependant FBA</a></li>
+						<li class="active"><a href="#reac"><i
+								class="icon-chevron-right"></i> FBA with a varying reaction flux</a></li>
 
 					</ul>
 
@@ -746,6 +748,79 @@ R_GPDDA3pp
 
 				<p>Example of a graphical result :</p>
 				<img src="img/RFBA.png"></img>
+
+
+				<h3 id="reac">FBA with a varying reaction flux</h3>
+
+				<p>This analysis returns the objective value for each reaction
+					flux. Then it calculates the shadow price on each point and groups
+					the points with same shadow price into phetotipic phases that are
+					represented in different colors.</p>
+				<p>To give a hint on what reactions are active in each phase, a
+					FVA is applied on each and the result is graphically shown :
+					essential reactions are displayed</p>
+
+				<h4>Command-line arguments</h4>
+				<ul>
+					<li>-s String : Sbml file path</li>
+					<li>-cond String : Condition file path
+					<li>-int String : [OPTIONAL]Interaction file path
+					<li>-r String : Name of the reaction to test
+					<li>-nointsolv : [OPTIONAL, default = false]Interactions are
+						not in the solver
+					<li>-init Double : Initial flux value of the reaction to test
+
+
+
+
+
+
+
+
+					
+					<li>-f Double : [OPTIONAL, default = 0.1]Difference between
+						each FBA for the reaction flux
+					<li>-n Integer : [OPTIONAL, default = number of available
+						processors]Number of threads
+					<li>-out String : [OPTIONAL]Output file name
+					<li>-plot : [OPTIONAL, default = false]Plots the results
+					<li>-lib Double : [OPTIONAL, default = 0]Percentage of non
+						optimality for new constraints
+					<li>-pre Integer : [OPTIONAL, default = 6]Number of decimals
+						of precision for calculations
+					<li>-sol String : Solver name
+					<li>-h : Prints help
+				</ul>
+				<p>Example : FlexfluxReac -s network.xml -cond cond.txt -int
+					int.txt -r R1 -init -10 -end 0 -plot -out out.txt</p>
+
+
+				<h4>Results</h4>
+
+				<p>Example of a text result file :</p>
+				<pre>
+Reaction flux result
+
+Reaction : R_EX_o2_e_
+
+Flux	Objective
+-25.0	0.9774397675372284
+-24.9	0.9774397675337614
+-24.799999999999997	0.9774397674227392
+-24.699999999999996	0.977439767474565
+-24.599999999999994	0.9774397675311552
+-24.499999999999993	0.9774397674706738
+-24.39999999999999	0.9774397677365042
+-24.29999999999999	0.9774397680077657
+-24.19999999999999	0.9774397661598593
+-24.099999999999987	0.9774397676671168
+-23.999999999999986	0.9774397675391788
+</pre>
+
+				<p>Example of a graphical result :</p>
+				<img src="img/Reac.png"></img>
+
+
 
 
 			</div>
