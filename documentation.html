@@ -78,6 +78,11 @@
 								class="icon-chevron-right"></i> Time dependant FBA</a></li>
 						<li class="active"><a href="#reac"><i
 								class="icon-chevron-right"></i> FBA with a varying reaction flux</a></li>
+						<li class="active"><a href="#tworeacs"><i
+								class="icon-chevron-right"></i> FBA with two varying fluxes</a></li>
+
+						<li class="active"><a href="#pareto"><i
+								class="icon-chevron-right"></i> Pareto analysis</a></li>
 
 					</ul>
 
@@ -709,6 +714,7 @@ R_GPDDA3pp
 						iteration in hour
 					<li>-it Integer : [OPTIONAL, default = 150]Number of
 						iterations
+					<li>-bio String : Name of the biomass reaction
 					<li>-n Integer : [OPTIONAL, default = number of available
 						processors]Number of threads
 					<li>-out String : [OPTIONAL]Output file name
@@ -721,10 +727,11 @@ R_GPDDA3pp
 					<li>-h : Prints help
 				</ul>
 				<p>Example 1 : FlexfluxRFBA -s network.xml -cond cond.txt -int
-					int.txt -x 0.01 -plot -out out.txt</p>
+					int.txt -bio R_BIOMASS -x 0.01 -plot -out out.txt</p>
 
 				<p>Example 2 : FlexfluxRFBA -s network.xml -cond cond.txt -int
-					int.txt -plot -out out.txt -x 0.01 -t 0.02 -it 400 -e "R1 R2 G1 G2"</p>
+					int.txt -bio R_BIOMASS -plot -out out.txt -x 0.01 -t 0.02 -it 400
+					-e "R1 R2 G1 G2"</p>
 
 				<h4>Results</h4>
 
@@ -753,12 +760,14 @@ R_GPDDA3pp
 				<h3 id="reac">FBA with a varying reaction flux</h3>
 
 				<p>This analysis returns the objective value for each reaction
-					flux. Then it calculates the shadow price on each point and groups
-					the points with same shadow price into phetotipic phases that are
-					represented in different colors.</p>
-				<p>To give a hint on what reactions are active in each phase, a
-					FVA is applied on each and the result is graphically shown :
-					essential reactions are displayed</p>
+					flux.</p>
+				<p>This permits a phenotype phase plane analysis.</p>
+				<p>In order to do that, it calculates the shadow price on each
+					point and groups the points with same shadow price into phetotipic
+					phases that are represented in different colors. To give a hint on
+					what reactions are active in each phase, a FVA is applied on each
+					and the result is graphically shown : essential reactions are
+					displayed</p>
 
 				<h4>Command-line arguments</h4>
 				<ul>
@@ -768,16 +777,8 @@ R_GPDDA3pp
 					<li>-r String : Name of the reaction to test
 					<li>-nointsolv : [OPTIONAL, default = false]Interactions are
 						not in the solver
-					<li>-init Double : Initial flux value of the reaction to test
-
-
-
-
-
-
-
-
-					
+					<li>-init Double : Initial flux value of the reaction to test</li>
+					<li>-end Double : Final flux value of the reaction to test
 					<li>-f Double : [OPTIONAL, default = 0.1]Difference between
 						each FBA for the reaction flux
 					<li>-n Integer : [OPTIONAL, default = number of available
@@ -820,8 +821,178 @@ Flux	Objective
 				<p>Example of a graphical result :</p>
 				<img src="img/Reac.png"></img>
 
+				<h3 id="tworeacs">FBA with two varying fluxes</h3>
+
+				<p>This analysis returns the objective value for each
+					combination of reaction flux.</p>
+				<p>This permits a phenotype phase plane analysis.</p>
+				<p>In order to do that, it calculates the shadow price on each
+					point and groups the points with same shadow price into phetotipic
+					phases that are represented in different colors. To give a hint on
+					what reactions are active in each phase, a FVA is applied on each
+					and the result is graphically shown : essential reactions are
+					displayed</p>
 
 
+				<h4>Command-line arguments</h4>
+				<ul>
+					<li>-s String : Sbml file path</li>
+					<li>-cond String : Condition file path
+					<li>-int String : [OPTIONAL]Interaction file path
+					<li>-r String : Name of the first reaction to test
+					<li>-r2 String : Name of the second reaction to test
+					<li>-nointsolv : [OPTIONAL, default = false]Interactions are
+						not in the solver
+					<li>-init Double : Initial flux value of the first reaction to
+						test</li>
+					<li>-end Double : Final flux value of the first reaction to
+						test
+					<li>-f Double : [OPTIONAL, default = 0.1]Difference between
+						each FBA for the first reaction flux
+					<li>-init2 Double : Initial flux value of the second reaction
+						to test</li>
+					<li>-end2 Double : Final flux value of the second reaction to
+						test
+					<li>-f2 Double : [OPTIONAL, default = 0.1]Difference between
+						each FBA for the second reaction flux
+					<li>-n Integer : [OPTIONAL, default = number of available
+						processors]Number of threads
+					<li>-out String : [OPTIONAL]Output file name
+					<li>-plot : [OPTIONAL, default = false]Plots the results
+					<li>-lib Double : [OPTIONAL, default = 0]Percentage of non
+						optimality for new constraints
+					<li>-pre Integer : [OPTIONAL, default = 6]Number of decimals
+						of precision for calculations
+					<li>-sol String : Solver name
+					<li>-h : Prints help
+				</ul>
+				<p>Example : FlexfluxTwoReacs -s network.xml -cond cond.txt -int
+					int.txt -r R1 -init -20 -end 0 -r2 R2 -20 -end2 0 -f2 0.2 -plot
+					-out out.txt</p>
+
+
+				<h4>Results</h4>
+
+				<p>Example of a text result file :</p>
+				<pre>
+Two reactions fluxes result
+
+Reaction 1 : R_EX_glc_e_
+
+Reaction 2 : R_EX_o2_e_
+
+Flux1	Flux2	Objective
+-20.0	-20.0	1.2758953060653444
+-20.0	-19.0	1.2371172404384612
+-20.0	-18.0	1.198339174672826
+-20.0	-17.0	1.1595611091109952
+-20.0	-16.0	1.1207830433459551
+-20.0	-15.0	1.0820049776659562
+-20.0	-14.0	1.0432269119837638
+-20.0	-12.0	0.9641886896914271
+-20.0	-13.0	1.0044488463038121
+-20.0	-11.0	0.9222073161823569
+-20.0	-10.0	0.8802259414352678
+-20.0	-9.0	0.8382445692476869
+-20.0	-8.0	0.7962631931058066
+-20.0	-7.0	0.754281819170313
+-20.0	-6.0	0.712300444794139
+-20.0	-5.0	0.6703190714139102
+-20.0	-4.0	0.6283376964824727
+-20.0	-3.0	0.586356322785057
+-20.0	-2.0	0.5443749481708158
+-20.0	-1.0	0.5023935742370715
+-20.0	0.0	0.45889273906424144
+-19.0	-20.0	1.2468117567663672
+-19.0	-19.0	1.2080336910614118
+-19.0	-18.0	1.1692556254589799
+-19.0	-16.0	1.0916994940936404
+-19.0	-17.0	1.1304775597825145
+-19.0	-15.0	1.052921428404065
+</pre>
+
+				<p>Example of a graphical result :</p>
+				<img src="img/TwoReacs.png"></img>
+
+				<h3 id="pareto">Pareto analysis</h3>
+
+				<p>The goal of this analysis is to determine what objective (or
+					set of objectives) an organism is optimizing</p>
+
+				<p>It take as an arguent a file containing the objevtive
+					functions to test and experimental values, and finds out (in one,
+					two and three dimensions) what objective optimization is closest to
+					the experimental values.</p>
+
+
+				<p>In this analysis, the objective function of the condition
+					file is ignored</p>
+
+				<h4>Objective function and experimental values file</h4>
+
+
+				The file must contain all the objectives in the first line, and then
+				one line per experimental value. There must be as many values for
+				one experiment as there are objective functions.
+				</p>
+				<p>For each experimental value, values for the objectives must
+					be in order and separated by a space.</p>
+
+
+				<p>Example :</p>
+
+				<pre>MIN(summ) MAX(atpYield) MAX(R_Biomass_Ecoli_core_w_GAM)
+
+1667.4 213.0 6.4
+1635.9 191.0 7.9
+1622.2 204.0 7.2
+1640.4 171.0 7.4
+1696.2 176.0 7.2
+1657.4 173.0 7.4
+1642.9 207.0 6.9
+1616.7 185.0 7.7
+1569.8 198.0 7.8	
+</pre>
+
+
+				<h4>Command-line arguments</h4>
+				<ul>
+					<li>-s String : Sbml file path</li>
+					<li>-cond String : Condition file path
+					<li>-int String : [OPTIONAL]Interaction file path
+					<li>-exp String : Path of file containing objective functions
+						and experimental values
+					<li>-nointsolv : [OPTIONAL, default = false]Interactions are
+						not in the solver processors]Number of threads
+					<li>-out String : [OPTIONAL]Output file name
+					<li>-plot : [OPTIONAL, default = false]Plots the results
+					<li>-lib Double : [OPTIONAL, default = 0]Percentage of non
+						optimality for new constraints
+					<li>-pre Integer : [OPTIONAL, default = 6]Number of decimals
+						of precision for calculations
+					<li>-sol String : Solver name
+					<li>-h : Prints help
+				</ul>
+				<p>Example : FlexfluxPareto -s network.xml -cond cond.txt -int
+					int.txt -plot -e expFile</p>
+
+
+				<h4>Results</h4>
+
+
+				<p>Example of a graphical result :</p>
+
+				<p>One dimension</p>
+
+				<img src="img/Pareto1D.png"></img>
+
+				<p>Two dimensions</p>
+
+				<img src="img/Pareto2D.png"></img>
+
+				<p>Three dimensions</p>
+
+				<img src="img/Pareto3D.png"></img>
 
 			</div>
 			<footer>
