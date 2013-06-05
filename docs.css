@@ -15,7 +15,15 @@ h3 {
   -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.065);
      -moz-box-shadow: 0 1px 4px rgba(0,0,0,.065);
           box-shadow: 0 1px 4px rgba(0,0,0,.065);
+          
+           border: 1px solid #e5e5e5;
 }
+
+
+
+/*
+the menu
+*/
 .bs-docs-sidenav > li > a {
   display: block;
   width: 190px \9;
@@ -25,6 +33,15 @@ h3 {
    background-color: #0088cc;
    color : #fff;
 }
+
+/*
+the sub menu
+*/
+.bs-docs-sidenav > ul > li > a {
+  display: block;
+
+}
+
 .bs-docs-sidenav > li:first-child > a {
   -webkit-border-radius: 6px 6px 0 0;
      -moz-border-radius: 6px 6px 0 0;
@@ -47,7 +64,7 @@ h3 {
    background-color : #fff;
 }
 .bs-docs-sidenav a:hover .icon-chevron-right {
-  opacity: .5;
+
 }
 
 
