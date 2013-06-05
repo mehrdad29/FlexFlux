@@ -3,17 +3,24 @@
 <head>
 <title>FlexFlux documentation</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Bootstrap -->
-<link href="http://twitter.github.io/bootstrap/assets/css/bootstrap.css"
-	rel="stylesheet" media="screen">
-
+<!-- Les styles -->
 <link
-	href="http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css"
+	href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css"
 	rel="stylesheet" media="screen">
-
 <link
 	href="http://twitter.github.io/bootstrap/assets/js/google-code-prettify/prettify.css"
 	rel="stylesheet" media="screen">
+<link
+	href="http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css"
+	rel="stylesheet" media="screen">
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script
+	src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/js/bootstrap.min.js"></script>
+<script
+	src="http://twitter.github.io/bootstrap/assets/js/bootstrap-affix.js"></script>
+<script
+	src="http://twitter.github.io/bootstrap/assets/js/google-code-prettify/prettify.js"></script>
 
 
 <link href="docs.css" rel="stylesheet" media="screen">
@@ -33,7 +40,6 @@
 					<ul class="nav">
 						<li><a href="./index.html">About</a></li>
 						<li class="active"><a href="./documentation.html">Documentation</a></li>
-						<li><a href="./example.html">Examples</a></li>
 						<li><a href="#">Sources</a></li>
 					</ul>
 				</div>
@@ -136,7 +142,7 @@
 					<li>Consequently to the steady-state assumption, it adds
 						constraints corresponding to the steady state..</li>
 					<li>It adds all reaction fluxes constraints that are written
-						this way in an SBML file: <pre>
+						this way in an SBML file: <pre class="prettyprint linenums">
 &lt;parameter id="LOWER_BOUND" value="0.000000" units="mmol_per_gDW_per_hr"/&gt;
 &lt;parameter id="UPPER_BOUND" value="999999.000000" units="mmol_per_gDW_per_hr"/&gt;
 </pre> If no value is given for a reaction, the lower bound is set to 0 for
@@ -150,10 +156,8 @@
 				<p>This file is used to define the objective function as well as
 					constraints.</p>
 				<h4>Objective function</h4>
-				<p>To set the objective function :
-				<pre>
-obj : MAX(2*a + -1*b)
-</pre>
+				<p>To set the objective function : obj : MAX(2*a + -1*b)
+				<pre class="prettyprint linenums"></pre>
 				where a and b are variables.
 				</p>
 				The variables must be separated by a "+" sign and the coefficients
@@ -167,7 +171,7 @@ obj : MAX(2*a + -1*b)
 
 				<p>Exeample :</p>
 
-				<pre>
+				<pre class="prettyprint linenums">
 obj : MAX(R_GLC)
 obj : MAX(R_BIOMASS)</pre>
 
@@ -180,13 +184,14 @@ obj : MAX(R_BIOMASS)</pre>
 				<ul>
 
 
-					<li>The ligne may contain three columns : <pre>
+					<li>The ligne may contain three columns : <pre
+							class="prettyprint linenums">
 a 3 6
 </pre> Which means 3 &lt; a &lt; 6
 
 					</li>
 
-					<li>Or two columns : <pre>
+					<li>Or two columns : <pre class="prettyprint linenums">
 b -1
 </pre> Which means b=-1
 
@@ -196,11 +201,11 @@ b -1
 
 
 				To add integer variables, they must be written under the line
-				<pre>
+				<pre class="prettyprint linenums">
 INTEGER
 </pre>
 				The lines :
-				<pre>
+				<pre class="prettyprint linenums">
 INTEGER
 
 a 3 6
@@ -214,7 +219,7 @@ a 3 6
 
 				The lines :
 
-				<pre>
+				<pre class="prettyprint linenums">
 BINARY
 
 a
@@ -229,7 +234,7 @@ b 1
 				<h4>Equations</h4>
 
 				Equations can be added under the line
-				<pre>
+				<pre class="prettyprint linenums">
 EQUATIONS
 </pre>
 
@@ -252,7 +257,7 @@ EQUATIONS
 
 				<p>Example of a condititon file :</p>
 
-				<pre>
+				<pre class="prettyprint linenums">
 obj : MAX(R_BIOMASS)
 
 a 5
@@ -298,11 +303,13 @@ d = 2*a + 3*c
 
 				There are two kinds of interactions :
 				<ul>
-					<li>An IF THEN interaction. They must be written this way : <pre>
+					<li>An IF THEN interaction. They must be written this way : <pre
+							class="prettyprint linenums">
 IF[A]THEN[B]
 </pre> This one means : if A is not equal to 0, then B must not be equal to 0.
 					</li>
-					<li>An EQ interaction. They must be written this way : <pre>
+					<li>An EQ interaction. They must be written this way : <pre
+							class="prettyprint linenums">
 [A]EQ[B]
 </pre> This one means : if A is not equal to 0, then B must not be equal to 0,
 						AND if B is not equal to 0, A must not be equal to 0.
@@ -316,7 +323,7 @@ IF[A]THEN[B]
 					AND and OR.</p>
 
 				For example :
-				<pre>
+				<pre class="prettyprint linenums">
 IF[A AND B]THEN[C]
 </pre>
 
@@ -326,7 +333,7 @@ IF[A AND B]THEN[C]
 
 				<p>Specific values for variables can also be added thanks to the
 					signs :</p>
-				<pre>
+				<pre class="prettyprint linenums">
 =,<=,<,>=,>,*
 </pre>
 
@@ -345,7 +352,7 @@ IF[A AND B]THEN[C]
 
 				<p>Example of an interaction file :</p>
 
-				<pre>
+				<pre class="prettyprint linenums">
 IF[M_glc_D_b>0.01]THEN[R_EX_ac_e_>=0][0][0.4]
 
 IF[M_glc_D_b>0]THEN[lacZ=0.001]
@@ -395,7 +402,7 @@ IF[lacZ</pre>
 				<h4>Results</h4>
 
 				Example of a text result file :
-				<pre>
+				<pre class="prettyprint linenums">
 FBA result
 
 obj : 0.5922576416566118
@@ -462,7 +469,7 @@ R_COBALT2tpp	0.0018703496323081898
 				<h4>Results</h4>
 
 				<p>Example of a text result file :</p>
-				<pre>
+				<pre class="prettyprint linenums">
 FVA result
 
 obj : 0.7828866047548423
@@ -545,7 +552,7 @@ R_AGM4PCP	0.0	-3.700601804157433E-10
 				<h4>Results</h4>
 
 				<p>Example of a text result file :</p>
-				<pre>
+				<pre class="prettyprint linenums">
 KO results : 
 
 R_EX_for_e obj value : 0.8739215069684306
@@ -605,7 +612,7 @@ R_EX_co2_e obj value : 0.46166961416013474
 				<h4>Results</h4>
 				<p>Example of a text result file :</p>
 
-				<pre> 
+				<pre class="prettyprint linenums"> 
 FVA comparison result obj1 : 0.7828866047383652
 obj2 : 0.49596211041804494 Name min1 max1 min2 max2 R_PANTS
 4.509426843292984E-4 4.509426115533177E-4 2.856741756007939E-4
@@ -667,7 +674,7 @@ R_3CMPtex 0.0 0.0 0.0 0.0 </pre>
 				<h4>Results</h4>
 
 				<p>Example of a text result file :</p>
-				<pre>
+				<pre class="prettyprint linenums">
 Dead Reactions result
 
 R_UDPGPpp
@@ -736,7 +743,7 @@ R_GPDDA3pp
 				<h4>Results</h4>
 
 				<p>Example of a text result file :</p>
-				<pre>
+				<pre class="prettyprint linenums">
 	M_ac_b	X	M_glc_D_b	
 0.1	0.30124822339178314	0.003244304343296768	10.39672341359657	
 0.2	0.3025980955822357	0.0035085035572960345	10.393179999096633	
@@ -799,7 +806,7 @@ R_GPDDA3pp
 				<h4>Results</h4>
 
 				<p>Example of a text result file :</p>
-				<pre>
+				<pre class="prettyprint linenums">
 Reaction flux result
 
 Reaction : R_EX_o2_e_
@@ -874,7 +881,7 @@ Flux	Objective
 				<h4>Results</h4>
 
 				<p>Example of a text result file :</p>
-				<pre>
+				<pre class="prettyprint linenums">
 Two reactions fluxes result
 
 Reaction 1 : R_EX_glc_e_
@@ -941,7 +948,7 @@ Flux1	Flux2	Objective
 
 				<p>Example :</p>
 
-				<pre>MIN(summ) MAX(atpYield) MAX(R_Biomass_Ecoli_core_w_GAM)
+				<pre class="prettyprint linenums">MIN(summ) MAX(atpYield) MAX(R_Biomass_Ecoli_core_w_GAM)
 
 1667.4 213.0 6.4
 1635.9 191.0 7.9
@@ -980,19 +987,32 @@ Flux1	Flux2	Objective
 				<h4>Results</h4>
 
 
-				<p>Example of a graphical result :</p>
+				<p>Example of graphical results :</p>
 
-				<p>One dimension</p>
 
-				<img src="img/Pareto1D.png"></img>
 
-				<p>Two dimensions</p>
 
-				<img src="img/Pareto2D.png"></img>
+				<ul class="nav nav-tabs" id="myTab">
+					<li class="active"><a href="#1d">One dimension</a></li>
+					<li><a href="#2d">Two dimensions</a></li>
+					<li><a href="#3d">Three dimensions</a></li>
 
-				<p>Three dimensions</p>
+				</ul>
 
-				<img src="img/Pareto3D.png"></img>
+				<div class="tab-content">
+					<div class="tab-pane active" id="1d">
+						<img src="img/Pareto1D.png"></img>
+					</div>
+					<div class="tab-pane" id="2d">
+						<img src="img/Pareto2D.png"></img>
+					</div>
+					<div class="tab-pane" id="3d">
+						<img src="img/Pareto3D.png"></img>
+
+
+					</div>
+
+				</div>
 
 			</div>
 			<footer>
@@ -1002,5 +1022,22 @@ Flux1	Flux2	Objective
 		</div>
 		<script src="http://code.jquery.com/jquery.js"></script>
 		<script src="bootstrap/js/bootstrap.min.js"></script>
+		<script>
+     	!function ($) {
+     		$(function(){
+				window.prettyPrint && prettyPrint()   
+			})
+		}(window.jQuery)
+	</script>
+		<script>
+  $(function () {
+    $('#myTab a:first').tab('show');
+  })
+  
+  $('#myTab a').click(function (e) {
+  e.preventDefault();
+  $(this).tab('show');
+})
+</script>
 </body>
 </html>
