@@ -108,15 +108,14 @@ body {
 			</div>
 			<div class="span9">
 				<p>FlexFlux is a tool for metabolic fluxes analysis. It is
-					usable as Java executable files (.jar format) and is intergrated to
-					parseBioNet library. FlexFlux is based on a mathematical method,
-					FBA (flux balance analysis) which consists in transforming a
-					metabolic network into linear equations and calculate fluxes thanks
-					to linear programming. This method does not rely on kinetic
-					parameters but is based on constrainsts, in particular steady state
-					constraints. From these constraints, FBA can determine an optimal
-					value (maximal or minimal) for one or more fluxes : the objective
-					function.</p>
+					usable as Java executable files (.jar format). FlexFlux is based on
+					a mathematical method, FBA (flux balance analysis) which consists
+					in transforming a metabolic network into linear equations and
+					calculate fluxes thanks to linear programming. This method does not
+					rely on kinetic parameters but is based on constrainsts, in
+					particular steady state constraints. From these constraints, FBA
+					can determine an optimal value (maximal or minimal) for one or more
+					fluxes : the objective function.</p>
 				<p>To sum up, FBA needs :
 				<ul>
 					<li>A metabolic network</li>
@@ -396,6 +395,7 @@ IF[A AND B]THEN[C]
 							<p>If the solver you use supports it and if you don't have a
 								problem with calculation times, we advise you to use this mode.
 
+
 							
 							<p>This mode is supported by the solver CPLEX.</p>
 						</li>
@@ -535,7 +535,7 @@ R_COBALT2tpp	0.0018703496323081898
 						<li>-int String : [OPTIONAL]Interaction file path
 						<li>-nointsolv : [OPTIONAL, default = false]Interactions are
 							not in the solver
-						<li>-e String : [OPTIONAL]Biological entities to perfrom the
+						<li>-e String : [OPTIONAL]Biological entities to perform the
 							FVA analysis on (Space-separated list of entities, example : "R1
 							R2 G1 G2"). If empty, FVA is done on all reactions
 						<li>-n Integer : [OPTIONAL, default = number of available
@@ -591,7 +591,7 @@ R_AGM4PCP	0.0	-3.700601804157433E-10
 
 					A KO analysis consists in setting network entities values to 0, and
 					observe the effect on the objective function. There are 3 ways to
-					perfrom this KO analysis :
+					perform this KO analysis :
 					<ul>
 						<li>Mode 0: the KO analysis is performed on reactions.
 						<li>Mode 1: the KO analysis is performed on genes.
@@ -613,7 +613,7 @@ R_AGM4PCP	0.0	-3.700601804157433E-10
 						<li>-int String : [OPTIONAL]Interaction file path
 						<li>-nointsolv : [OPTIONAL, default = false]Interactions are
 							not in the solver
-						<li>-e String : [Optional]Biological entities to perfrom the
+						<li>-e String : [Optional]Biological entities to perform the
 							KO analysis on (Space-separated list of entities, example : "R1
 							R2 G1 G2"). If empty, KO is done on all reactions (mode 0) or all
 							genes (mode 1)
@@ -679,7 +679,7 @@ R_EX_co2_e obj value : 0.46166961416013474
 						<li>-int String : [OPTIONAL]Interaction file path
 						<li>-nointsolv : [OPTIONAL, default = false]Interactions are
 							not in the solver
-						<li>-e String : [OPTIONAL]Biological entities to perfrom the
+						<li>-e String : [OPTIONAL]Biological entities to perform the
 							FVA analyses on (Space-separated list of entities, example : "R1
 							R2 G1 G2"). If empty, FVA is done on all reactions
 						<li>-n Integer : [OPTIONAL, default = number of available
