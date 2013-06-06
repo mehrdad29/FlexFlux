@@ -2,7 +2,10 @@
 h3 {
   padding-top: 40px;
 }
-
+h3 > .page-header,
+h3 > .lead {
+  color: #5a5a5a;
+}
 
 .bs-docs-sidenav {
   width: 228px;
@@ -123,5 +126,6 @@ padding: 30px 0;
 margin-top: 70px;
 border-top: 1px solid #e5e5e5;
 background-color: #f5f5f5;
+
 }
 

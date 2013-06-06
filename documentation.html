@@ -17,7 +17,7 @@
 	rel="stylesheet" media="screen">
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script
+<script type="text/javascript"
 	src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/js/bootstrap.min.js"></script>
 <script
 	src="http://twitter.github.io/bootstrap/assets/js/bootstrap-affix.js"></script>
@@ -372,6 +372,36 @@ IF[A AND B]THEN[C]
 					Those two values can be added between brackets at the end of the
 					desired interaction.
 
+					<h4>Interactions and solvers</h4>
+
+					<p>Depending on the solver that is used, FlexFlux has two ways
+						of dealing with interactions (logical constraints) :</p>
+					<ul>
+						<li>Inteactions can be treated outside the solver, before the
+							calculation begins. In this case, interactions are evaluated one
+							by one (so they must be in order) and it can lead to some
+							inconsistencies because the interactions are evaluated before and
+							are not checked after the calculations. Also, this mode does not
+							support "EQ" interactions.
+							<p>We don't advise to use this mode for big interaction
+								networks. However if there are just a few interactions, this
+								mode will be way faster and as efficient as the other one.</p>
+							<p>This mode can be used with all solvers.</p>
+						</li>
+						<li>Interactions can be treated by the solver itself. In this
+							case there won't be any inconsistencie and a large interaction
+							network can be used. However, this mode is slower and isn't
+							available for all solvers.
+
+							<p>If the solver you use supports it and if you don't have a
+								problem with calculation times, we advise you to use this mode.
+
+							
+							<p>This mode is supported by the solver CPLEX.</p>
+						</li>
+					</ul>
+
+					<p>The choice of the mode in made with the argument -nointsolv.</p>
 
 					<h4>Example</h4>
 
@@ -839,7 +869,7 @@ R_GPDDA3pp
 						phases that are represented in different colors. To give a hint on
 						what reactions are active in each phase, a FVA is applied on each
 						and the result is graphically shown : essential reactions are
-						displayed</p>
+						displayed.</p>
 
 					<h4>Command-line arguments</h4>
 					<ul>
