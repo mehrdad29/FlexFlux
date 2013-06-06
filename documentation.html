@@ -140,7 +140,7 @@ body {
 						<li>A file describing the metabolic network (SBML or
 							tabulated file).</li>
 						<li>A condition file containing the objective function as
-							well as constraints concerning the value of variables.</li>
+							well as constraints concerning the values of variables.</li>
 						<li>An interaction file containing logical constraints and
 							that can take into account an activation time for these
 							constraints.</li>
@@ -223,7 +223,7 @@ INTEGER
 
 a 3 6
 </pre>
-					mean thah a can take the values 3 4 5 and 6.
+					mean that a can take the values 3 4 5 and 6.
 
 					<p>For binary values (0 or 1), the variable name has to be
 						written under the line BINARY.</p>
@@ -372,6 +372,9 @@ IF[A AND B]THEN[C]
 					Those two values can be added between brackets at the end of the
 					desired interaction.
 
+
+					<h4>Example</h4>
+
 					<p>Example of an interaction file :</p>
 
 					<pre class="prettyprint linenums">
@@ -381,7 +384,9 @@ IF[M_glc_D_b>0]THEN[lacZ=0.001]
 
 IF[M_glc_D_b=0]THEN[lacZ=0.03]
 
-IF[lacZ</pre>
+IF[lacZ<0.02]THEN[R_EX_lcts_e_=0]
+
+IF[lacZ>0.02]THEN[R_EX_lcts_e_=-3]</pre>
 
 
 					<h3 id="keywords">Key words</h3>
@@ -421,8 +426,7 @@ IF[lacZ</pre>
 				<section id="analysis">
 					<h2>Details of the analyses</h2>
 
-					This section details all possible analyses using FlexFlux. Each of
-					these analyses is exectued with a different .jar file. They take
+					This section details all possible analyses using FlexFlux. They take
 					command-line arguments as an input and the output can be either a
 					text file containing all the results data, a graphical
 					representation of the data, or both.
