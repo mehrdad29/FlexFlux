@@ -426,9 +426,9 @@ IF[lacZ>0.02]THEN[R_EX_lcts_e_=-3]</pre>
 				<section id="analysis">
 					<h2>Details of the analyses</h2>
 
-					This section details all possible analyses using FlexFlux. They take
-					command-line arguments as an input and the output can be either a
-					text file containing all the results data, a graphical
+					This section details all possible analyses using FlexFlux. They
+					take command-line arguments as an input and the output can be
+					either a text file containing all the results data, a graphical
 					representation of the data, or both.
 
 
@@ -437,7 +437,7 @@ IF[lacZ>0.02]THEN[R_EX_lcts_e_=-3]</pre>
 
 					Computes a simple FBA analysis and returns the value of the
 					optimized objective function as well as all variable values.
-					Variable values can represent only solution amongst many.
+					Variable values can represent only one solution amongst many.
 
 					<h4>Command-line arguments</h4>
 					<ul>
@@ -675,16 +675,19 @@ R_EX_co2_e obj value : 0.46166961416013474
 					<p>Example of a text result file :</p>
 
 					<pre class="prettyprint linenums"> 
-FVA comparison result obj1 : 0.7828866047383652
-obj2 : 0.49596211041804494 Name min1 max1 min2 max2 R_PANTS
-4.509426843292984E-4 4.509426115533177E-4 2.856741756007939E-4
-2.856732640866555E-4 R_PTRCabcpp 0.0 1.6274867675747373E-8 0.0
--5.061156116425991E-8 R_PGSA161 0.0 2.6279160236786225E-9 0.0
--5.443135009386424E-8 R_PGSA160 0.0 5.872649921911943E-9 0.0
--2.542352461887276E-8 R_GLUDy -6.685636303446345 -6.685636303151922
--4.234771399285264 -4.23477180974523 R_G6Ptex 0.0 0.0 0.0 0.0
-R_12DGR141tipp 0.0 1.8335413187742233E-9 0.0 -4.4298705148548834E-8
-R_3CMPtex 0.0 0.0 0.0 0.0 </pre>
+FVA comparison result
+
+obj1 : 0.7828866047383652
+obj2 : 0.49596211041804494
+Name	min1	max1	min2	max2
+R_PANTS	4.509426843292984E-4	4.509426115533177E-4	2.856741756007939E-4	2.856732640866555E-4
+R_PTRCabcpp	0.0	1.6274867675747373E-8	0.0	-5.061156116425991E-8
+R_PGSA161	0.0	2.6279160236786225E-9	0.0	-5.443135009386424E-8
+R_PGSA160	0.0	5.872649921911943E-9	0.0	-2.542352461887276E-8
+R_GLUDy	-6.685636303446345	-6.685636303151922	-4.234771399285264	-4.23477180974523
+R_G6Ptex	0.0	0.0	0.0	0.0
+R_12DGR141tipp	0.0	1.8335413187742233E-9	0.0	-4.4298705148548834E-8
+R_3CMPtex	0.0	0.0	0.0	0.0</pre>
 					<p>Example of a graphical result :</p>
 					<img src="img/CompFVA.png"></img>
 
