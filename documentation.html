@@ -506,6 +506,8 @@ IF[lacZ>0.02]THEN[R_EX_lcts_e_=-3]</pre>
 						<li>-pre Integer : [OPTIONAL, default = 6]Number of decimals
 							of precision for calculations and results
 						<li>-sol String : Solver name
+						<li>-ext : [OPTIONAL, default = false]Uses the extended SBML
+							format
 						<li>-h : Prints help
 					</ul>
 
@@ -595,6 +597,8 @@ R_EX_o2_e	-21.799493
 						<li>-pre Integer : [OPTIONAL, default = 6]Number of decimals
 							of precision for calculations and results
 						<li>-sol String : Solver name
+						<li>-ext : [OPTIONAL, default = false]Uses the extended SBML
+							format</li>
 						<li>-h : Prints help
 					</ul>
 
@@ -692,6 +696,8 @@ R_EX_akg_e	0.0	1.430083
 						<li>-pre Integer : [OPTIONAL, default = 6]Number of decimals
 							of precision for calculations and results
 						<li>-sol String : Solver name
+						<li>-ext : [OPTIONAL, default = false]Uses the extended SBML
+							format</li>
 						<li>-h : Prints help
 					</ul>
 
@@ -764,6 +770,8 @@ b2914 obj value : 0.873922
 						<li>-pre Integer : [OPTIONAL, default = 6]Number of decimals
 							of precision for calculations and results
 						<li>-sol String : Solver name
+						<li>-ext : [OPTIONAL, default = false]Uses the extended SBML
+							format</li>
 						<li>-h : Prints help
 					</ul>
 
@@ -850,6 +858,8 @@ R_EX_o2_e	-23.709518	-19.895962	-45.644797	-37.831242
 						<li>-pre Integer : [OPTIONAL, default = 6]Number of decimals
 							of precision for calculations and results
 						<li>-sol String : Solver name
+						<li>-ext : [OPTIONAL, default = false]Uses the extended SBML
+							format</li>
 						<li>-h : Prints help
 					</ul>
 					<p>Example 1 : FlexfluxDR -s network.xml -plot -out out.txt</p>
@@ -921,6 +931,8 @@ R_MALt2_2
 						<li>-pre Integer : [OPTIONAL, default = 6]Number of decimals
 							of precision for calculations and results
 						<li>-sol String : Solver name
+						<li>-ext : [OPTIONAL, default = false]Uses the extended SBML
+							format</li>
 						<li>-h : Prints help
 					</ul>
 					<p>Example 1 : FlexfluxRFBA -s network.xml -cond cond.txt -int
@@ -1007,6 +1019,8 @@ R_MALt2_2
 						<li>-pre Integer : [OPTIONAL, default = 6]Number of decimals
 							of precision for calculations and results
 						<li>-sol String : Solver name
+						<li>-ext : [OPTIONAL, default = false]Uses the extended SBML
+							format</li>
 						<li>-h : Prints help
 					</ul>
 					<p>Example : FlexfluxReac -s network.xml -cond cond.txt -int
@@ -1095,6 +1109,8 @@ Flux	Objective
 						<li>-pre Integer : [OPTIONAL, default = 6]Number of decimals
 							of precision for calculations and results
 						<li>-sol String : Solver name
+						<li>-ext : [OPTIONAL, default = false]Uses the extended SBML
+							format</li>
 						<li>-h : Prints help
 					</ul>
 					<p>Example : FlexfluxTwoReacs -s network.xml -cond cond.txt
@@ -1197,13 +1213,15 @@ Flux1	Flux2	Objective
 							not in the solver
 						<li>-n Integer : [OPTIONAL, default = number of available
 							processors]Number of threads
-						<li>-out String : [OPTIONAL]Output file name
+						<li>-out String : [OPTIONAL]Output folder name
 						<li>-plot : [OPTIONAL, default = false]Plots the results
 						<li>-lib Double : [OPTIONAL, default = 0]Percentage of non
 							optimality for new constraints
 						<li>-pre Integer : [OPTIONAL, default = 6]Number of decimals
 							of precision for calculations and results
 						<li>-sol String : Solver name
+						<li>-ext : [OPTIONAL, default = false]Uses the extended SBML
+							format</li>
 						<li>-h : Prints help
 					</ul>
 					<p>Example : FlexfluxPareto -s network.xml -cond cond.txt -int
@@ -1220,8 +1238,13 @@ Flux1	Flux2	Objective
 						<li>The objective/experimental file <a
 							href="results/expFile.txt">expFile.txt</a></li>
 						<li>The command line : FlexfluxPareto -s coli_core.xml -cond
-							conditionsPareto.txt -exp expFile.txt -plot</li>
+							conditionsPareto.txt -exp expFile.txt -out pareto/ -plot</li>
 					</ul>
+
+
+					<p>
+						The text result files are in the folder <a href="results/pareto">pareto/</a>.
+					</p>
 
 					<p>The graphical results :</p>
 
