@@ -32,7 +32,19 @@ body {
 	padding-bottom: 40px;
 }
 </style>
+<script type="text/javascript">
 
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-41601195-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
 </head>
 <body data-spy="scroll" data-target=".bs-docs-sidebar">
 	<div class="navbar navbar-inverse navbar-fixed-top">
@@ -46,7 +58,6 @@ body {
 				<a class="brand" href="./index.html">FlexFlux</a>
 				<div class="nav-collapse collapse">
 					<ul class="nav">
-						<li class="active"><a href="./index.html">About</a></li>
 						<li><a href="./documentation.html">Documentation</a></li>
 						<li><a href="https://github.com/lmarmiesse/FlexFlux">Sources</a></li>
 						<li><a href="mailto:Lucas.Marmiesse@toulouse.inra.fr">Contact</a></li>
@@ -95,13 +106,13 @@ body {
 							<img src="img/FBA.png" alt="">
 							<div class="carousel-caption">
 								<h4>FBA results</h4>
-								<p>FBA results with all fluxes values</p>
+								<p>FBA results with all variable values</p>
 							</div>
 						</div>
 						<div class="item">
 							<img src="img/RFBA.png" alt="">
 							<div class="carousel-caption">
-								<h4>Time dependant FVA results</h4>
+								<h4>Time dependent FVA results</h4>
 								<p>Cell density and glucose concentration variations</p>
 							</div>
 						</div>
@@ -116,8 +127,8 @@ body {
 							<img src="img/TwoReacs.png" alt="">
 							<div class="carousel-caption">
 								<h4>Phenotype phase plane</h4>
-								<p>Phenotype phase plane obtained by optimizing and
-									varying two fluxes</p>
+								<p>Phenotype phase plane obtained by optimizing and varying
+									two fluxes</p>
 							</div>
 						</div>
 					</div>
@@ -141,8 +152,8 @@ body {
 			<div class="container">
 				<p>
 					This project was developed at <a
-						href="http://www6.toulouse.inra.fr/lipm">LIPM</a> by Lucas
-					Marmiesse. Copyright &copy; 2013, INRA
+						href="http://www6.toulouse.inra.fr/lipm_eng/Platforms-and-Facilities/Bioinformatics-platform/Activities">LIPM</a>
+					by Lucas Marmiesse. Copyright &copy; 2013, INRA
 				</p>
 			</div>
 		</footer>

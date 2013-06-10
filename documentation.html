@@ -33,6 +33,19 @@ body {
 	padding-bottom: 40px;
 }
 </style>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-41601195-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
 </head>
 <body data-spy="scroll" data-target=".bs-docs-sidebar">
 	<div class="navbar navbar-inverse navbar-fixed-top">
@@ -46,7 +59,6 @@ body {
 				<a class="brand" href="./index.html">FlexFlux</a>
 				<div class="nav-collapse collapse">
 					<ul class="nav">
-						<li><a href="./index.html">About</a></li>
 						<li class="active"><a href="./documentation.html">Documentation</a></li>
 						<li><a href="https://github.com/lmarmiesse/FlexFlux">Sources</a></li>
 						<li><a href="mailto:Lucas.Marmiesse@toulouse.inra.fr">Contact</a></li>
@@ -93,7 +105,7 @@ body {
 						<li><a href="#dead"><i class="icon-chevron-right"></i>
 								Dead reactions</a></li>
 						<li><a href="#rfba"><i class="icon-chevron-right"></i>
-								Time dependant FBA</a></li>
+								Time dependent FBA</a></li>
 						<li><a href="#reac"><i class="icon-chevron-right"></i>
 								FBA with a varying reaction flux</a></li>
 						<li><a href="#tworeacs"><i class="icon-chevron-right"></i>
@@ -140,10 +152,13 @@ body {
 							tabulated file).</li>
 						<li>A condition file containing the objective function as
 							well as constraints concerning the values of variables.</li>
-						<li>An interaction file containing logical constraints and
-							that can take into account an activation time for these
-							constraints.</li>
+						<li>An interaction file containing logical constraints that
+							can take into account an activation time for these constraints.</li>
 					</ul>
+
+					<div>
+						<img src="img/General.png"></img>
+					</div>
 
 					<h3 id="network">File describing the network</h3>
 					From this file, FlexFlux performs a few actions:
@@ -175,13 +190,15 @@ body {
 					The variables must be separated by a "+" sign and the coefficients
 					can be any real number.
 
+					<h4>Nested objective functions</h4>
+
 					<p>Multiple objective function can be written. In this case,
-						all objective function (excpet for the last one), will be
+						all objective function (except for the last one), will be
 						considered as constraints : the optimal value will be fixed (with
 						a percentage of liberty than can be specified), before starting
 						the actual analysis.</p>
 
-					<p>Exeample :</p>
+					<p>Example :</p>
 
 					<pre class="prettyprint linenums">
 obj : MAX(R_GLC)
@@ -316,7 +333,7 @@ d = 2*a + 3*c
 					An interaction works with two parts :
 					<ul>
 						<li>A condition : what will be checked.</li>
-						<li>A consequence : what will be done is the condition is
+						<li>A consequence : what will be done if the condition is
 							true.</li>
 					</ul>
 
@@ -338,7 +355,7 @@ IF[A]THEN[B]
 					</ul>
 
 
-					In both of these cases, interaction can be more complicated.
+					In both of these cases, interaction can be more complicated :
 
 					<p>There are two available keywords to combine interactions :
 						AND and OR.</p>
@@ -358,7 +375,7 @@ IF[A AND B]THEN[C]
 =,<=,<,>=,>,*
 </pre>
 
-					A*0.5 means that A must be equals to 0.5 times it's upper bound.
+					A*0.5 means that A must be equals to 0.5 times its upper bound.
 
 
 					<p>Two optional values can be added to an interaction and they
@@ -368,8 +385,12 @@ IF[A AND B]THEN[C]
 						<li>How long the interaction will stay true.</li>
 					</ul>
 
-					Those two values can be added between brackets at the end of the
-					desired interaction.
+					<p>Those two values can be added between brackets at the end of
+						the desired interaction.</p>
+					<p>
+						These optional values are only used in <a href="#rfba">time
+							dependent FVA.</a>
+					</p>
 
 					<h4>Interactions and solvers</h4>
 
@@ -394,6 +415,21 @@ IF[A AND B]THEN[C]
 
 							<p>If the solver you use supports it and if you don't have a
 								problem with calculation times, we advise you to use this mode.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 							
@@ -448,7 +484,7 @@ IF[lacZ>0.02]THEN[R_EX_lcts_e_=-3]</pre>
 					<pre class="prettyprint linenums">IF[GPR_R_glc]THEN[R_glc=1.5]</pre>
 
 					<p>This interaction means that if the reaction R_glc is not set
-						to zero by it's genes, then it's value must be 1.5</p>
+						to zero by its genes, then its value must be 1.5</p>
 
 
 
@@ -493,7 +529,8 @@ IF[lacZ>0.02]THEN[R_EX_lcts_e_=-3]</pre>
 
 					<h4>Results</h4>
 
-					Example of a text result file :
+
+					<p>For this example, we used Example of a text result file :
 					<pre class="prettyprint linenums">
 FBA result
 
@@ -792,7 +829,7 @@ R_GPDDA3pp
 					<img src="img/DR.png"></img>
 
 
-					<h3 id="rfba">Time dependant FBA</h3>
+					<h3 id="rfba">Time dependent FBA</h3>
 
 					<p>This analysis is based on external metabolic concentrations
 						and cell density. Given initial metabolite concentrations, cell
@@ -865,7 +902,7 @@ R_GPDDA3pp
 						flux.</p>
 					<p>This permits a phenotype phase plane analysis.</p>
 					<p>In order to do that, it calculates the shadow price on each
-						point and groups the points with same shadow price into phetotipic
+						point and groups the points with same shadow price into phenotipic
 						phases that are represented in different colors. To give a hint on
 						what reactions are active in each phase, a FVA is applied on each
 						and the result is graphically shown : essential reactions are
@@ -933,7 +970,8 @@ Flux	Objective
 						phases that are represented in different colors. To give a hint on
 						what reactions are active in each phase, a FVA is applied on each
 						and the result is graphically shown : essential reactions are
-						displayed</p>
+						displayed. (The "order" found for the phases is only indicative
+						and might not)</p>
 
 
 					<h4>Command-line arguments</h4>
@@ -1021,7 +1059,7 @@ Flux1	Flux2	Objective
 					<p>The goal of this analysis is to determine what objective (or
 						set of objectives) an organism is optimizing.</p>
 
-					<p>It take as an arguent a file containing the objevtive
+					<p>It take as an arguent a file containing the objective
 						functions to test and experimental values, and finds out (in one,
 						two and three dimensions) what objective optimization is closest
 						to the experimental values.</p>
@@ -1090,24 +1128,24 @@ Flux1	Flux2	Objective
 
 
 					<ul class="nav nav-tabs" id="myTab">
-						<li class="active"><a href="#1d">One dimension</a></li>
+						<li><a href="#1d">One dimension</a></li>
 						<li><a href="#2d">Two dimensions</a></li>
-						<li><a href="#3d">Three dimensions</a></li>
+						<li class="active"><a href="#3d">Three dimensions</a></li>
 
 					</ul>
 
 					<div class="tab-content">
-						<div class="tab-pane active" id="1d">
+						<div class="tab-pane" id="1d">
 							<img src="img/Pareto1D.png"></img>
 						</div>
 						<div class="tab-pane" id="2d">
 							<img src="img/Pareto2D.png"></img>
 						</div>
-						<div class="tab-pane" id="3d">
+						<div class="tab-pane active" id="3d">
 							<img src="img/Pareto3D.png"></img>
 
-
 						</div>
+					</div>
 				</section>
 			</div>
 
@@ -1116,8 +1154,8 @@ Flux1	Flux2	Objective
 			<div class="container">
 				<p>
 					This project was developed at <a
-						href="http://www6.toulouse.inra.fr/lipm">LIPM</a> by Lucas
-					Marmiesse. Copyright &copy; 2013, INRA
+						href="http://www6.toulouse.inra.fr/lipm_eng/Platforms-and-Facilities/Bioinformatics-platform/Activities">LIPM</a>
+					by Lucas Marmiesse. Copyright &copy; 2013, INRA
 				</p>
 			</div>
 		</footer>
@@ -1134,7 +1172,7 @@ Flux1	Flux2	Objective
 	</script>
 	<script>
   $(function () {
-    $('#myTab a:first').tab('show');
+    $('#myTab a:last').tab('show');
   })
   
   $('#myTab a').click(function (e) {
