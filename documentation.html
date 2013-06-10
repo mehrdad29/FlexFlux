@@ -167,18 +167,23 @@ body {
 							as variables.</li>
 						<li>Consequently to the steady-state assumption, it adds
 							constraints corresponding to the steady state..</li>
-						<li>It adds all reaction fluxes constraints that are written
-							this way in an SBML file: <pre class="prettyprint linenums">
-&lt;parameter id="LOWER_BOUND" value="0.000000" units="mmol_per_gDW_per_hr"/&gt;
-&lt;parameter id="UPPER_BOUND" value="999999.000000" units="mmol_per_gDW_per_hr"/&gt;
-</pre> If no value is given for a reaction, the lower bound is set to 0 for
+						<li>It adds all reaction fluxes constraints. If no value is
+							given for a reaction, the lower bound is set to 0 for
 							irreversible reactions and to -999999 for reversible ones, and
-							the upper bound is set to 999999.
-						</li>
+							the upper bound is set to 999999.</li>
 						<li>It adds to the model all the logical constraints (as
 							interactions) concerning gene-protein-reaction interactions
 							(GPR).</li>
 					</ul>
+
+					FlexFlux supports this <a
+						href="http://metexplore.toulouse.inra.fr/metexploreJoomla/metexplore/Doc/html/documentation.html#sbml">SBML
+						format.</a> FlexFlux also supports an <a
+						href="http://metexplore.toulouse.inra.fr/metexploreJoomla/metexplore/Doc/html/documentation.html#extSbml">extended
+						SBML format</a> used by <a
+						href="http://metexplore.toulouse.inra.fr/metexplore/index.php">MetExplore</a>.
+
+
 					<h3 id="cond">Condition file</h3>
 					<p>This file is used to define the objective function as well
 						as constraints.</p>
@@ -254,15 +259,12 @@ a 3 6
 
 					To set it to 0 or 1, the value must be written next to the
 					variable. The lines :
-
 					<pre class="prettyprint linenums">
 BINARY
 
 a
 b 1
 </pre>
-
-
 					mean : a is a boolean and can be equal to 0 or 1 and b is a boolean
 					equal to 1
 
@@ -273,7 +275,6 @@ b 1
 					<pre class="prettyprint linenums">
 EQUATIONS
 </pre>
-
 					These equations must be composed of known variables and respect a
 					few rules :
 
@@ -372,7 +373,6 @@ IF[A]THEN[B]
 					<pre class="prettyprint linenums">
 IF[A AND B]THEN[C]
 </pre>
-
 					This means that if A is not equal to 0 and B is not equal to 0,
 					then c must not be equal to 0.
 
@@ -382,7 +382,6 @@ IF[A AND B]THEN[C]
 					<pre class="prettyprint linenums">
 =,<=,<,>=,>,*
 </pre>
-
 					A*0.5 means that A must be equals to 0.5 times its upper bound.
 
 
@@ -452,15 +451,15 @@ IF[lacZ>0.02]THEN[R_EX_lcts_e_=-3]</pre>
 					<h4>Getting the summation of all fluxes</h4>
 
 					<p>
-						The key-word <b>FluxesSummation</b> can be used to get the sum of
-						the absolute values of all fluxes in the network.
+						The key-word <b>FluxSum</b> can be used to get the sum of the
+						absolute values of all fluxes in the network.
 					</p>
 					<p>It can be used for instance as an objective function :</p>
 
-					<pre class="prettyprint linenums">obj : MIN(FluxesSummation)</pre>
+					<pre class="prettyprint linenums">obj : MIN(FluxSum)</pre>
 
 					<p>It can be also used as a constraint :</p>
-					<pre class="prettyprint linenums">FluxesSummation 0 3000</pre>
+					<pre class="prettyprint linenums">FluxSum 0 3000</pre>
 
 					<h4>Getting the state of a gene-protein relation (GPR)</h4>
 
@@ -476,9 +475,6 @@ IF[lacZ>0.02]THEN[R_EX_lcts_e_=-3]</pre>
 
 					<p>This interaction means that if the reaction R_glc is not set
 						to zero by its genes, then its value must be 1.5</p>
-
-
-
 				</section>
 				<section id="analysis">
 					<h2>Details of the analyses</h2>
