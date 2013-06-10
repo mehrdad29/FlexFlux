@@ -1113,8 +1113,9 @@ Flux	Objective
 						<li>The SBML file <a href="results/coli_core.xml">coli_core.xml</a></li>
 						<li>The condition file <a href="results/conditionsFBA.txt">conditionsFBA.txt</a></li>
 						<li>The command line : FlexfluxTwoReacs -s coli_core.xml
-							-cond conditionsFBA.txt -out Two_Reacs_result.txt -r R_EX_glc_e -init
-							-20 -end 0 -f 0.5 -r2 R_EX_o2_e -init2 -20 -end2 0 -f2 0.05 -plot</li>
+							-cond conditionsFBA.txt -out Two_Reacs_result.txt -r R_EX_glc_e
+							-init -20 -end 0 -f 0.5 -r2 R_EX_o2_e -init2 -20 -end2 0 -f2 0.05
+							-plot</li>
 					</ul>
 
 
@@ -1144,8 +1145,8 @@ Flux1	Flux2	Objective
 					<img src="img/TwoReacs.png"></img>
 
 					<p style="text-align: center">We can see the evolution of the
-						maximum biomass production for different values of oxygen and glucose uptake.
-						We observe four distinctive phenotypic phases.</p>
+						maximum biomass production for different values of oxygen and
+						glucose uptake. We observe four distinctive phenotypic phases.</p>
 
 					<h3 id="pareto">Pareto analysis</h3>
 
@@ -1157,9 +1158,12 @@ Flux1	Flux2	Objective
 						two and three dimensions) what objective optimization is closest
 						to the experimental values.</p>
 
+					<p>The objectives that are optimized are those for witch the
+						experimental values are the closest to the pareto surface.</p>
+
 
 					<p>In this analysis, the objective function of the condition
-						file is ignored.</p>
+						file is optional and ignored if present.</p>
 
 					<h4>Objective function and experimental values file</h4>
 
@@ -1172,7 +1176,7 @@ Flux1	Flux2	Objective
 
 					<p>Example :</p>
 
-					<pre class="prettyprint linenums">MIN(summ) MAX(atpYield) MAX(R_Biomass_Ecoli_core_w_GAM)
+					<pre class="prettyprint linenums">MIN(sum) MAX(atpYield) MAX(R_Biomass_Ecoli_core_w_GAM)
 
 1667.4 213.0 6.4
 1635.9 191.0 7.9
@@ -1213,10 +1217,21 @@ Flux1	Flux2	Objective
 					<h4>Results</h4>
 
 
-					<p>Example of graphical results :</p>
+					For this example, we used :
+					<ul>
+						<li>The SBML file <a href="results/coli_core.xml">coli_core.xml</a></li>
+						<li>The condition file <a href="results/conditionsPareto.txt">conditionsPareto.txt</a></li>
+						<li>The objective/experimental file <a
+							href="results/expFile.txt">expFile.txt</a></li>
+						<li>The command line : FlexfluxPareto -s coli_core.xml -cond
+							conditionsPareto.txt -exp expFile.txt -plot</li>
+					</ul>
 
+					<p>The graphical results :</p>
 
-
+					<p>Axes values are normalized such that the coordinates of the
+						points on the Pareto surface range from 0 to 1, where 1 represents
+						the theoretical minimum or maximum of an objective.</p>
 
 					<ul class="nav nav-tabs" id="myTab">
 						<li><a href="#1d">One dimension</a></li>
@@ -1234,7 +1249,6 @@ Flux1	Flux2	Objective
 						</div>
 						<div class="tab-pane active" id="3d">
 							<img src="img/Pareto3D.png"></img>
-
 						</div>
 					</div>
 				</section>
