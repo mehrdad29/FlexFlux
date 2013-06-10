@@ -936,26 +936,46 @@ R_MALt2_2
 
 					<h4>Results</h4>
 
-					<p>Example of a text result file :</p>
+					For this example, we used :
+					<ul>
+						<li>The SBML file <a href="results/coli_core.xml">coli_core.xml</a></li>
+						<li>The condition file <a href="results/conditionsRFBA.txt">conditionsRFBA.txt</a>
+							where initial concentrations are set
+						</li>
+						<li>The interaction file <a
+							href="results/interactionsRFBA.txt">interactionsRFBA.txt</a></li>
+						<li>The command line : FlexfluxRFBA -s coli_core.xml -cond
+							conditionsRFBA.txt -int interactionsRFBA.txt -out RFBA_result.txt
+							-bio R_Biomass_Ecoli_core_w_GAM -e lacZ -x 0.011 -plot</li>
+					</ul>
+
+
+					Here is a part of the text result file <a
+						href="results/RFBA_result.txt">RFBA_result.txt</a> :
 					<pre class="prettyprint linenums">
-	M_ac_b	X	M_glc_D_b	
-0.1	0.30124822339178314	0.003244304343296768	10.39672341359657	
-0.2	0.3025980955822357	0.0035085035572960345	10.393179999096633	
-0.30000000000000004	0.3040578943190229	0.003794217776452585	10.389348027412566	
-0.4	0.3056365714463819	0.004103199070501644	10.38520399995325	
-0.5	0.30734380780002574	0.004437342188593783	10.380722504524934	
-0.6000000000000001	0.3091900725724046	0.004798696178361882	10.37587605949744	
-0.7000000000000001	0.31118668751236406	0.005189476951184255	10.370634945280047	
-0.8	0.31334589635288845	0.0056120808706972315	10.364967022073671	
-0.9	0.3156809398926776	0.006069099447885289	10.358837532781724	
-1.0	0.3182061371919748	0.00656333523286263	10.352208889871068	
-1.1	0.32093697338055993	0.007097819000798511	10.345040444876032	
+	M_lac_D_b	lacZ	X	M_glc_D_b	
+0.0	5.8	0.001	0.011	1.6	
+0.1	5.8	0.001	0.011626	1.592649	
+0.2	5.8	0.001	0.012287	1.584879	
+0.3	5.8	0.001	0.012985	1.576668	
+0.4	5.8	0.001	0.013724	1.567989	
+0.5	5.8	0.001	0.014504	1.558818	
+0.6	5.8	0.001	0.015329	1.549124	
+0.7	5.8	0.001	0.016201	1.53888	
+0.8	5.8	0.001	0.017122	1.528053	
+0.9	5.8	0.001	0.018096	1.51661	
+1.0	5.8	0.001	0.019125	1.504516	
+1.1	5.8	0.001	0.020212	1.491735	
 </pre>
+					<p>The graphical result :</p>
+					<img src="img/RFBA1.png"></img> <img src="img/RFBA2.png"></img>
 
-					<p>X represents the cell density</p>
-
-					<p>Example of a graphical result :</p>
-					<img src="img/RFBA.png"></img>
+					<p style="text-align: center">We can see the variation of the
+						value of differents entities. X represents the cell density. While
+						the glucose concentration (M_glc_D_b) is greater than 0, the gene
+						lacZ is repressed (thanks to an interaction in the interaction
+						file). When all the glucose is used, lacZ is not repressed and the
+						cell can use the lactose to grow.</p>
 
 
 					<h3 id="reac">FBA with a varying reaction flux</h3>
@@ -999,28 +1019,41 @@ R_MALt2_2
 
 					<h4>Results</h4>
 
-					<p>Example of a text result file :</p>
+					For this example, we used :
+					<ul>
+						<li>The SBML file <a href="results/coli_core.xml">coli_core.xml</a></li>
+						<li>The condition file <a href="results/conditionsFBA.txt">conditionsFBA.txt</a></li>
+						<li>The command line : FlexfluxReac -s coli_core.xml -cond
+							conditionsFBA.txt -out Reac_result.txt -r R_EX_o2_e -init -20
+							-end 0 -f 0.05 -plot</li>
+					</ul>
+
+
+					Here the text result file <a href="results/Reac_result.txt">Reac_result.txt</a>
+					:
 					<pre class="prettyprint linenums">
 Reaction flux result
 
-Reaction : R_EX_o2_e_
+Flux : R_EX_o2_e
+Objective : R_Biomass_Ecoli_core_w_GAM
 
 Flux	Objective
--25.0	0.9774397675372284
--24.9	0.9774397675337614
--24.799999999999997	0.9774397674227392
--24.699999999999996	0.977439767474565
--24.599999999999994	0.9774397675311552
--24.499999999999993	0.9774397674706738
--24.39999999999999	0.9774397677365042
--24.29999999999999	0.9774397680077657
--24.19999999999999	0.9774397661598593
--24.099999999999987	0.9774397676671168
--23.999999999999986	0.9774397675391788
+-20.0	0.832614
+-19.95	0.831466
+-19.9	0.830318
+-19.85	0.82917
+-19.8	0.828023
+-19.7	0.825727
+-19.75	0.826875
 </pre>
-
-					<p>Example of a graphical result :</p>
+					<p>The graphical result :</p>
 					<img src="img/Reac.png"></img>
+
+					<p style="text-align: center">We can see the evolution of the
+						maximum biomass production for different values of oxygen uptake.
+						We observe three distinctive phenotypic phases.</p>
+
+
 
 					<h3 id="tworeacs">FBA with two varying fluxes</h3>
 
@@ -1075,46 +1108,44 @@ Flux	Objective
 
 					<h4>Results</h4>
 
-					<p>Example of a text result file :</p>
+					For this example, we used :
+					<ul>
+						<li>The SBML file <a href="results/coli_core.xml">coli_core.xml</a></li>
+						<li>The condition file <a href="results/conditionsFBA.txt">conditionsFBA.txt</a></li>
+						<li>The command line : FlexfluxTwoReacs -s coli_core.xml
+							-cond conditionsFBA.txt -out Two_Reacs_result.txt -r R_EX_glc_e -init
+							-20 -end 0 -f 0.5 -r2 R_EX_o2_e -init2 -20 -end2 0 -f2 0.05 -plot</li>
+					</ul>
+
+
+					Here the text result file <a href="results/Two_Reacs_result.txt">Two_Reacs_result.txt</a>
+					:
 					<pre class="prettyprint linenums">
 Two reactions fluxes result
 
-Reaction 1 : R_EX_glc_e_
-
-Reaction 2 : R_EX_o2_e_
+Flux1 : R_EX_glc_e
+Flux2 : R_EX_o2_e
+Objective : R_Biomass_Ecoli_core_w_GAM
 
 Flux1	Flux2	Objective
--20.0	-20.0	1.2758953060653444
--20.0	-19.0	1.2371172404384612
--20.0	-18.0	1.198339174672826
--20.0	-17.0	1.1595611091109952
--20.0	-16.0	1.1207830433459551
--20.0	-15.0	1.0820049776659562
--20.0	-14.0	1.0432269119837638
--20.0	-12.0	0.9641886896914271
--20.0	-13.0	1.0044488463038121
--20.0	-11.0	0.9222073161823569
--20.0	-10.0	0.8802259414352678
--20.0	-9.0	0.8382445692476869
--20.0	-8.0	0.7962631931058066
--20.0	-7.0	0.754281819170313
--20.0	-6.0	0.712300444794139
--20.0	-5.0	0.6703190714139102
--20.0	-4.0	0.6283376964824727
--20.0	-3.0	0.586356322785057
--20.0	-2.0	0.5443749481708158
--20.0	-1.0	0.5023935742370715
--20.0	0.0	0.45889273906424144
--19.0	-20.0	1.2468117567663672
--19.0	-19.0	1.2080336910614118
--19.0	-18.0	1.1692556254589799
--19.0	-16.0	1.0916994940936404
--19.0	-17.0	1.1304775597825145
--19.0	-15.0	1.052921428404065
+-20.0	-19.5	1.192735
+-20.0	-20.0	1.208983
+-20.0	-19.0	1.176487
+-20.0	-18.5	1.160239
+-20.0	-17.5	1.127742
+-20.0	-18.0	1.14399
+-20.0	-16.5	1.095245
+-20.0	-16.0	1.078997
+-20.0	-15.5	1.062749
+-20.0	-17.0	1.111494
+-20.0	-15.0	1.0465
 </pre>
-
-					<p>Example of a graphical result :</p>
+					<p>The graphical result :</p>
 					<img src="img/TwoReacs.png"></img>
+
+					<p style="text-align: center">We can see the evolution of the
+						maximum biomass production for different values of oxygen and glucose uptake.
+						We observe four distinctive phenotypic phases.</p>
 
 					<h3 id="pareto">Pareto analysis</h3>
 
