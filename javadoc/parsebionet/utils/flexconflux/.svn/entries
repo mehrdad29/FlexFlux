@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   repos="https://svn.code.sf.net/p/parsebionet/code"
+   name=""
+   revision="463"
+   last-author="lmarmiesse"
+   url="https://svn.code.sf.net/p/parsebionet/code/trunk/doc/flexconflux/site/javadoc/parsebionet/utils/flexconflux"
+   committed-rev="463"
+   kind="dir"
+   committed-date="2013-06-11T14:12:04.316000Z"/>
+<entry
+   name="Bind.html"
+   checksum="56ea94c9fed28823d6f49b159cae0a36"
+   last-author="lmarmiesse"
+   text-time="2013-06-11T12:04:52.000000Z"
+   committed-rev="463"
+   kind="file"
+   committed-date="2013-06-11T14:12:04.316000Z"/>
+<entry
+   name="Constraint.html"
+   checksum="5f6f9492952cae80c2bb65b63572114f"
+   last-author="lmarmiesse"
+   text-time="2013-06-11T12:04:52.000000Z"
+   committed-rev="463"
+   kind="file"
+   committed-date="2013-06-11T14:12:04.316000Z"/>
+<entry
+   name="CplexBind.html"
+   checksum="c3fd14682d0021ef7f1d885f5016922f"
+   last-author="lmarmiesse"
+   text-time="2013-06-11T12:04:52.000000Z"
+   committed-rev="463"
+   kind="file"
+   committed-date="2013-06-11T14:12:04.316000Z"/>
+<entry
+   name="DoubleResult.html"
+   checksum="e47f07a05615e7f0eb0076fe7760207a"
+   last-author="lmarmiesse"
+   text-time="2013-06-11T12:04:52.000000Z"
+   committed-rev="463"
+   kind="file"
+   committed-date="2013-06-11T14:12:04.316000Z"/>
+<entry
+   name="GLPKBind.html"
+   checksum="01173d1029e95fda1a856c349f80f7b4"
+   last-author="lmarmiesse"
+   text-time="2013-06-11T12:04:52.000000Z"
+   committed-rev="463"
+   kind="file"
+   committed-date="2013-06-11T14:12:04.316000Z"/>
+<entry
+   name="Objective.html"
+   checksum="a08f146e3b628c23e34f0198f7b527c4"
+   last-author="lmarmiesse"
+   text-time="2013-06-11T12:04:52.000000Z"
+   committed-rev="463"
+   kind="file"
+   committed-date="2013-06-11T14:12:04.316000Z"/>
+<entry
+   name="Vars.html"
+   checksum="a2673d4c8c8a8531f284ccb7be18f048"
+   last-author="lmarmiesse"
+   text-time="2013-06-11T12:04:52.000000Z"
+   committed-rev="463"
+   kind="file"
+   committed-date="2013-06-11T14:12:04.316000Z"/>
+<entry
+   name="analyses"
+   kind="dir"/>
+<entry
+   name="class-use"
+   kind="dir"/>
+<entry
+   name="interaction"
+   kind="dir"/>
+<entry
+   name="operation"
+   kind="dir"/>
+<entry
+   name="package-frame.html"
+   checksum="3def85edc4efb2c6d0ca949a3585ef7e"
+   last-author="lmarmiesse"
+   text-time="2013-06-11T12:04:52.000000Z"
+   committed-rev="463"
+   kind="file"
+   committed-date="2013-06-11T14:12:04.316000Z"/>
+<entry
+   name="package-summary.html"
+   checksum="70faa2657283b283800c7f2979b939d5"
+   last-author="lmarmiesse"
+   text-time="2013-06-11T12:04:52.000000Z"
+   committed-rev="463"
+   kind="file"
+   committed-date="2013-06-11T14:12:04.316000Z"/>
+<entry
+   name="package-tree.html"
+   checksum="e0e131663f7337e5c9471d52a81d2b5e"
+   last-author="lmarmiesse"
+   text-time="2013-06-11T12:04:52.000000Z"
+   committed-rev="463"
+   kind="file"
+   committed-date="2013-06-11T14:12:04.316000Z"/>
+<entry
+   name="package-use.html"
+   checksum="db61f5956c1d45a5429fbdbd5857d923"
+   last-author="lmarmiesse"
+   text-time="2013-06-11T12:04:53.000000Z"
+   committed-rev="463"
+   kind="file"
+   committed-date="2013-06-11T14:12:04.316000Z"/>
+<entry
+   name="thread"
+   kind="dir"/>
+</wc-entries>

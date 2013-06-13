@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   name=""
+   repos="https://svn.code.sf.net/p/parsebionet/code"
+   revision="463"
+   last-author="lmarmiesse"
+   url="https://svn.code.sf.net/p/parsebionet/code/trunk/doc/flexconflux/site/javadoc/parsebionet/utils/flexconflux/operation"
+   committed-rev="463"
+   kind="dir"
+   committed-date="2013-06-11T14:12:04.316000Z"/>
+<entry
+   name="Operation.html"
+   checksum="457677190961353988f402cf9d37a226"
+   last-author="lmarmiesse"
+   text-time="2013-06-11T12:04:51.000000Z"
+   committed-rev="463"
+   kind="file"
+   committed-date="2013-06-11T14:12:04.316000Z"/>
+<entry
+   name="OperationCPLEX.html"
+   checksum="f306601358415dd29e8a273437767df8"
+   last-author="lmarmiesse"
+   text-time="2013-06-11T12:04:51.000000Z"
+   committed-rev="463"
+   kind="file"
+   committed-date="2013-06-11T14:12:04.316000Z"/>
+<entry
+   name="OperationEq.html"
+   checksum="0711430e81db02bc6ea0d05ab7d09bea"
+   last-author="lmarmiesse"
+   text-time="2013-06-11T12:04:51.000000Z"
+   committed-rev="463"
+   kind="file"
+   committed-date="2013-06-11T14:12:04.316000Z"/>
+<entry
+   name="OperationEqCPLEX.html"
+   checksum="ab6f13be153fed1d1e1a49b04df0cd15"
+   last-author="lmarmiesse"
+   text-time="2013-06-11T12:04:51.000000Z"
+   committed-rev="463"
+   kind="file"
+   committed-date="2013-06-11T14:12:04.316000Z"/>
+<entry
+   name="OperationFactory.html"
+   checksum="8d7a1bad93894b5f9b7dae98b93dd8c6"
+   last-author="lmarmiesse"
+   text-time="2013-06-11T12:04:51.000000Z"
+   committed-rev="463"
+   kind="file"
+   committed-date="2013-06-11T14:12:04.316000Z"/>
+<entry
+   name="OperationFactoryCPLEX.html"
+   checksum="a1ada1b989088de458ed31d9e5c94c7b"
+   last-author="lmarmiesse"
+   text-time="2013-06-11T12:04:51.000000Z"
+   committed-rev="463"
+   kind="file"
+   committed-date="2013-06-11T14:12:04.316000Z"/>
+<entry
+   name="OperationGe.html"
+   checksum="0f2d53b7bd6be347681d6adc3e32225c"
+   last-author="lmarmiesse"
+   text-time="2013-06-11T12:04:51.000000Z"
+   committed-rev="463"
+   kind="file"
+   committed-date="2013-06-11T14:12:04.316000Z"/>
+<entry
+   name="OperationGeCPLEX.html"
+   checksum="494126c65f6e5672c30dff66af568f98"
+   last-author="lmarmiesse"
+   text-time="2013-06-11T12:04:52.000000Z"
+   committed-rev="463"
+   kind="file"
+   committed-date="2013-06-11T14:12:04.316000Z"/>
+<entry
+   name="OperationGt.html"
+   checksum="71351673fae30992ef07f5ba5e4f65e7"
+   last-author="lmarmiesse"
+   text-time="2013-06-11T12:04:52.000000Z"
+   committed-rev="463"
+   kind="file"
+   committed-date="2013-06-11T14:12:04.316000Z"/>
+<entry
+   name="OperationGtCPLEX.html"
+   checksum="d48e904d395c1a8d3959e572f4f6f031"
+   last-author="lmarmiesse"
+   text-time="2013-06-11T12:04:52.000000Z"
+   committed-rev="463"
+   kind="file"
+   committed-date="2013-06-11T14:12:04.316000Z"/>
+<entry
+   name="OperationLe.html"
+   checksum="bfc7817528b7cab4d3a2192e5ff80d04"
+   last-author="lmarmiesse"
+   text-time="2013-06-11T12:04:52.000000Z"
+   committed-rev="463"
+   kind="file"
+   committed-date="2013-06-11T14:12:04.316000Z"/>
+<entry
+   name="OperationLeCPLEX.html"
+   checksum="a2e23f41e080c388085b797eb30eb496"
+   last-author="lmarmiesse"
+   text-time="2013-06-11T12:04:52.000000Z"
+   committed-rev="463"
+   kind="file"
+   committed-date="2013-06-11T14:12:04.316000Z"/>
+<entry
+   name="OperationLt.html"
+   checksum="d4b3bb243ba4a4d4960a4affabff992c"
+   last-author="lmarmiesse"
+   text-time="2013-06-11T12:04:52.000000Z"
+   committed-rev="463"
+   kind="file"
+   committed-date="2013-06-11T14:12:04.316000Z"/>
+<entry
+   name="OperationLtCPLEX.html"
+   checksum="d5331bb7f4869bf9e7ec5c68ae044e37"
+   last-author="lmarmiesse"
+   text-time="2013-06-11T12:04:52.000000Z"
+   committed-rev="463"
+   kind="file"
+   committed-date="2013-06-11T14:12:04.316000Z"/>
+<entry
+   name="OperationNotEq.html"
+   checksum="9293e9f64c7c84dd08cae34e331e40ce"
+   last-author="lmarmiesse"
+   text-time="2013-06-11T12:04:52.000000Z"
+   committed-rev="463"
+   kind="file"
+   committed-date="2013-06-11T14:12:04.316000Z"/>
+<entry
+   name="OperationNotEqCPLEX.html"
+   checksum="af39f548bac6636d9bd1bac943063a91"
+   last-author="lmarmiesse"
+   text-time="2013-06-11T12:04:52.000000Z"
+   committed-rev="463"
+   kind="file"
+   committed-date="2013-06-11T14:12:04.316000Z"/>
+<entry
+   name="class-use"
+   kind="dir"/>
+<entry
+   name="package-frame.html"
+   checksum="58316ef6ef81584f96c606882de525db"
+   last-author="lmarmiesse"
+   text-time="2013-06-11T12:04:52.000000Z"
+   committed-rev="463"
+   kind="file"
+   committed-date="2013-06-11T14:12:04.316000Z"/>
+<entry
+   name="package-summary.html"
+   checksum="cb7cc130a6c2633d50691224831fccb3"
+   last-author="lmarmiesse"
+   text-time="2013-06-11T12:04:52.000000Z"
+   committed-rev="463"
+   kind="file"
+   committed-date="2013-06-11T14:12:04.316000Z"/>
+<entry
+   name="package-tree.html"
+   checksum="c5859e7e0870466b7982ebe863cf28b3"
+   last-author="lmarmiesse"
+   text-time="2013-06-11T12:04:52.000000Z"
+   committed-rev="463"
+   kind="file"
+   committed-date="2013-06-11T14:12:04.316000Z"/>
+<entry
+   name="package-use.html"
+   checksum="9eff84e232ff11cf1e3992d04d3be24b"
+   last-author="lmarmiesse"
+   text-time="2013-06-11T12:04:53.000000Z"
+   committed-rev="463"
+   kind="file"
+   committed-date="2013-06-11T14:12:04.316000Z"/>
+</wc-entries>
