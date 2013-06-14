@@ -61,7 +61,8 @@ body {
 					<ul class="nav">
 						<li class="active"><a href="./documentation.html">Documentation</a></li>
 						<li><a href="./installation.html">Installation</a></li>
-						<li><a href="https://github.com/lmarmiesse/FlexFlux/wiki/Downloads">Download</a></li>
+						<li><a
+							href="https://github.com/lmarmiesse/FlexFlux/wiki/Downloads">Download</a></li>
 						<li><a href="https://github.com/lmarmiesse/FlexFlux">Sources</a></li>
 						<li><a href="./javadoc/index.html">Javadoc</a></li>
 						<li><a href="mailto:Lucas.Marmiesse@toulouse.inra.fr">Contact</a></li>
@@ -960,23 +961,27 @@ R_MALt2_2
 							-bio R_Biomass_Ecoli_core_w_GAM -e lacZ -x 0.011 -plot</li>
 					</ul>
 
+					<p>
+						The values for this example are extracted from [<a
+							href="#covertRef">1</a>].
+					</p>
 
 					Here is a part of the text result file <a
 						href="results/RFBA_result.txt">RFBA_result.txt</a> :
 					<pre class="prettyprint linenums">
 	M_lac_D_b	lacZ	X	M_glc_D_b	
-0.0	5.8	0.001	0.011	1.6	
-0.1	5.8	0.001	0.011626	1.592649	
-0.2	5.8	0.001	0.012287	1.584879	
-0.3	5.8	0.001	0.012985	1.576668	
-0.4	5.8	0.001	0.013724	1.567989	
-0.5	5.8	0.001	0.014504	1.558818	
-0.6	5.8	0.001	0.015329	1.549124	
-0.7	5.8	0.001	0.016201	1.53888	
-0.8	5.8	0.001	0.017122	1.528053	
-0.9	5.8	0.001	0.018096	1.51661	
-1.0	5.8	0.001	0.019125	1.504516	
-1.1	5.8	0.001	0.020212	1.491735	
+0.0	5.8	0.0	0.011	1.6	
+0.1	5.8	0.0	0.011626	1.592649	
+0.2	5.8	0.0	0.012287	1.584879	
+0.3	5.8	0.0	0.012985	1.576668	
+0.4	5.8	0.0	0.013724	1.567989	
+0.5	5.8	0.0	0.014504	1.558818	
+0.6	5.8	0.0	0.015329	1.549124	
+0.7	5.8	0.0	0.016201	1.53888	
+0.8	5.8	0.0	0.017122	1.528053	
+0.9	5.8	0.0	0.018096	1.51661	
+1.0	5.8	0.0	0.019125	1.504516	
+1.1	5.8	0.0	0.020212	1.491735
 </pre>
 					<p>The graphical result :</p>
 					<img src="img/RFBA1.png"></img> <img src="img/RFBA2.png"></img>
@@ -995,7 +1000,7 @@ R_MALt2_2
 						flux.</p>
 					<p>
 						This permits a phenotype phase plane analysis. [<a
-							href="#phenoRef">1</a>]
+							href="#phenoRef">2</a>]
 					</p>
 
 					<p>A phenotype phase corresponds to a specific metabolic
@@ -1171,7 +1176,7 @@ Flux1	Flux2	Objective
 						glucose uptake. We observe four distinctive phenotypic phases.</p>
 
 					<h3 id="pareto">Pareto analysis</h3>
-					[<a href="#paretoRef">2</a>]
+					[<a href="#paretoRef">3</a>]
 
 					<p>The goal of this analysis is to determine what objective (or
 						set of objectives) an organism is optimizing.</p>
@@ -1291,6 +1296,12 @@ Flux1	Flux2	Objective
 				</section>
 				<h2>References</h2>
 				<ol>
+					<li><p id="covertRef">
+							Markus W. Covert and Bernhard Ø. Palsson <b>Transcriptional
+								Regulation in Constraints-based Metabolic Models of Escherichia
+								coli.</b>The Journal of Biological Chemistry 2002
+
+						</p></li>
 					<li><p id="phenoRef">
 							Jeremy S. Edwards, Ramprasad Ramakrishna, Bernhard O. Palsson: <b>Characterizing
 								the Metabolic Phenotype: A Phenotype Phase Plane Analysis.</b>

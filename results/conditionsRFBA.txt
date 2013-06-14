@@ -14,4 +14,9 @@ M_glc_D_b 1.6
 M_lac_D_b 5.8
 
 
-lacZ 0.001 0.03
+
+
+BINARY
+
+#Gene lacZ can be repressed (0) or expressed(1)
+lacZ
