@@ -3,7 +3,7 @@ R_EX_glc_e -100
 
 atpYield 0 999999
 
-sum 0 2800
+sum 0 2900
 
 
 

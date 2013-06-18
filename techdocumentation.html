@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>FlexFlux documentation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<!-- Les styles -->
+<link
+	href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css"
+	rel="stylesheet" media="screen">
+<link
+	href="http://twitter.github.io/bootstrap/assets/js/google-code-prettify/prettify.css"
+	rel="stylesheet" media="screen">
+<link
+	href="http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css"
+	rel="stylesheet" media="screen">
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript"
+	src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/js/bootstrap.min.js"></script>
+<script
+	src="http://twitter.github.io/bootstrap/assets/js/bootstrap-affix.js"></script>
+<script
+	src="http://twitter.github.io/bootstrap/assets/js/google-code-prettify/prettify.js"></script>
+
+<link href="docs.css" rel="stylesheet" media="screen">
+<!-- <link href="docs2.css" rel="stylesheet" media="screen"> -->
+
+<style type="text/css">
+body {
+	padding-top: 60px;
+	padding-bottom: 40px;
+}
+</style>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-41601195-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+<body data-spy="scroll" data-target=".bs-docs-sidebar">
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<button type="button" class="btn btn-navbar" data-toggle="collapse"
+					data-target=".nav-collapse">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="brand" href="./index.html">FlexFlux</a>
+				<div class="nav-collapse collapse">
+					<ul class="nav">
+						<li><a href="./documentation.html">User documentation</a></li>
+						<li><a href="./installation.html">Installation</a></li>
+						<li class="active"><a href="./techdocumentation.html">Technical
+								documentation</a></li>
+						<li><a
+							href="https://github.com/lmarmiesse/FlexFlux/wiki/Downloads">Download</a></li>
+						<li><a href="https://github.com/lmarmiesse/FlexFlux">Sources</a></li>
+						<li><a href="./javadoc/index.html">Javadoc</a></li>
+						<li><a href="mailto:Lucas.Marmiesse@toulouse.inra.fr">Contact</a></li>
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<!-- Main hero unit for a primary marketing message or call to action -->
+		<div class="hero-unit">
+			<h1>FlexFlux technical documentation</h1>
+		</div>
+		<div class="row">
+			<div class="span3 bs-docs-sidebar">
+				<ul class="nav nav-list bs-docs-sidenav affix-top" data-spy="affix"
+					data-offset-top="240">
+					<li><a href="#newMethod"><i class="icon-chevron-right"></i>
+							Add a new FBA based method</a></li>
+					<li><a href="#newSolver"><i class="icon-chevron-right"></i>
+							Add a new solver</a></li>
+
+
+				</ul>
+			</div>
+			<div class="span9">
+
+				<p>All information about the network : entities, constraints and
+					interactions are accessible from the Bind class.</p>
+
+
+
+
+				<p>
+					See the <a href="./javadoc/index.html">Javadoc</a> for details
+					about all classes, methods and parameters.
+				</p>
+
+
+				<section id="newMethod">
+					<h2>Add a new FBA based method</h2>
+
+					<p>The first thing to do when creating a new FBA based method
+						is to create a new class in the package
+						parsebionet.applications.flux.flexflux</p>
+
+					<p>
+						Arguments are handled by the Java class library <a
+							href="http://args4j.kohsuke.org/">args4j</a>.
+					</p>
+
+
+					<p>The class you create has to follow theses steps :</p>
+					<ul>
+						<li>Get and check all arguments.</li>
+						<li>Create the right Bind object depending on the chosen
+							solver.
+							<p>Example :</p> <pre class="prettyprint linenums">bind = new CplexBind(!f.nointInSolver);</pre>
+						<li>Load the files specified in the arguments.
+							<p>Example :</p> <pre class="prettyprint linenums">bind.loadSbmlNetwork(f.sbmlFile, f.extended);
+if (f.condFile != "") {
+	bind.loadConditionsFile(f.condFile);
+}
+if (f.intFile != "") {
+	bind.loadInteractionsFile(f.intFile);	
+}</pre>
+						<li>Prepare the solver : transform all model entities into
+							solver variables and constraints. Example: <pre
+								class="prettyprint linenums">bind.prepareSolver();</pre>
+						</li>
+						<li>Create and run your analysis.
+							<p>Example :</p> <pre class="prettyprint linenums">Analysis analysis = new YourAnalysis(yourArguments);
+AnalysisResult result = analysis.runAnalysis();</pre>
+						<li>Plot or write the results to a file according to the
+							arguments.
+							<p>Example :</p> <pre class="prettyprint linenums">if (f.plot) {
+	result.plot();
+}
+if (!f.outName.equals("")) {
+	result.writeToFile(f.outName);
+}</pre>
+					</ul>
+
+
+
+					<p>To be faster, you can just copy and paste an existing class
+						(like FlexFluxFBA), change the arguments, the name of your method
+						and make other potential changes.
+					<p>All classes representing analysis extend the class Analysis
+						and all analysis result classes extend the class AnalysisResult.</p>
+
+					<img src="img/umlAna.png"></img>
+
+
+					<p>So you have to create two more classes :</p>
+					<ul>
+						<li>YourAnalysis which extends Analysis.
+						<li>YourAnalysisResult which extends AnalysisResult</li>
+					</ul>
+
+
+					<p>YourAnalysis will contain all the actions that you method
+						will make. You have to overwrite the function runAnalysis(). This
+						method creates and returns your YourAnalysisResult object.</p>
+
+
+					<p>YourAnalysisResult contains all the data calculated by your analysis and must overwrite at least 
+				two methods : 
+				<ul>
+				<li>writeToFile(String path)
+				
+				</ul>
+				
+				Threads
+				
+				
+				</section>
+				<section id="newSolver">
+					<h2>Add a new solver</h2>
+				</section>
+			</div>
+
+		</div>
+		<footer class="footer">
+			<div class="container">
+				<p>
+					This project was developed at <a
+						href="http://www6.toulouse.inra.fr/lipm_eng/Platforms-and-Facilities/Bioinformatics-platform/Activities">LIPM</a>
+					by Lucas Marmiesse. Copyright &copy; 2013, INRA
+				</p>
+			</div>
+		</footer>
+
+	</div>
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script>
+     	!function ($) {
+     		$(function(){
+				window.prettyPrint && prettyPrint()   
+			})
+		}(window.jQuery)
+	</script>
+	<script>
+  $(function () {
+    $('#myTab a:last').tab('show');
+  })
+  
+  $('#myTab a').click(function (e) {
+  e.preventDefault();
+  $(this).tab('show');
+})
+
+</script>
+
+</body>
+</html>
