@@ -94,16 +94,17 @@ body {
 								Multithreading</a></li>
 					</ul>
 
-					
+
 
 					<li><a href="#newSolver"><i class="icon-chevron-right"></i>
 							Add a new solver</a></li>
 
 					<ul>
-						<li><a href="#bind"><i class="icon-chevron-right"></i> Subclass of Bind</a></li>
-						<li><a href="#fact"><i class="icon-chevron-right"></i> The
-								factories</a></li>
-						
+						<li><a href="#bind"><i class="icon-chevron-right"></i>
+								Subclass of Bind</a></li>
+						<li><a href="#fact"><i class="icon-chevron-right"></i>
+								The factories</a></li>
+
 					</ul>
 
 				</ul>
@@ -289,6 +290,25 @@ public abstract YourThread makeYourThread(boolean interactionInSolver);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 						
 						<li>protected DoubleResult go(boolean saveResults) : Solves
 							the problem. This method creats a DoubleResult object containing
@@ -315,18 +335,12 @@ public abstract YourThread makeYourThread(boolean interactionInSolver);
 					<p>For example in the class ThreadFactoryYourSolver :</p>
 
 					<pre class="prettyprint linenums">
-public ThreadFVA makeFVAThread(boolean interactionInSolver,Queue<BioEntity> ents, Queue<BioEntity> entsCopy, FVAResult result) {
+public ThreadFVA makeFVAThread(boolean interactionInSolver,Queue&lt;BioEntity&gt; ents, Queue&lt;BioEntity&gt; entsCopy, FVAResult result) {
 
 	Bind bind = new YourSolverBind(constraints, simpleConstraints, intNet,bioNet, interactionInSolver);
 
 	return new ThreadFVA(bind, ents, entsCopy, result);
-}				
-					
-					
-					
-					
-					
-					</pre>
+}</pre>
 
 					<p>In the init() function of your YourSolverBind class you must
 						add :</p>
@@ -334,7 +348,7 @@ public ThreadFVA makeFVAThread(boolean interactionInSolver,Queue<BioEntity> ents
 					<pre class="prettyprint linenums">this.threadFactory = new ThreadFactoryYourSolver(constraints,simpleConstraints, intNet);</pre>
 
 
-					<h4>Interaction facroty and Operation factory</h4>
+					<h4>Relation facroty and Operation factory</h4>
 
 					<p>Depending on your solver there are two cases :</p>
 					<ol>
@@ -350,7 +364,14 @@ this.relationFactory = new RelationFactory();</pre></li>
 								make use of it.</p>
 
 
-							<p>You have a lot of work to do :/</p>
+							<p>You have to create an relation factory and an operation
+								factory for your solver.</p>
+
+
+
+							<p>Finally, add these two lines in the init() function of
+								your YourSolverBind class :</p> <pre class="prettyprint linenums">this.operationFactory = new OperationFactoryYourSolver();
+this.relationFactory = new RelationFactoryYourSolver();</pre></li>
 					</ol>
 
 

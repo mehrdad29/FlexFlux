@@ -59,9 +59,11 @@ body {
 				<a class="brand" href="./index.html">FlexFlux</a>
 				<div class="nav-collapse collapse">
 					<ul class="nav">
-						<li class="active"><a href="./documentation.html">User documentation</a></li>
+						<li class="active"><a href="./documentation.html">User
+								documentation</a></li>
 						<li><a href="./installation.html">Installation</a></li>
-						<li><a href="./techdocumentation.html">Technical documentation</a></li>
+						<li><a href="./techdocumentation.html">Technical
+								documentation</a></li>
 						<li><a
 							href="https://github.com/lmarmiesse/FlexFlux/wiki/Downloads">Download</a></li>
 						<li><a href="https://github.com/lmarmiesse/FlexFlux">Sources</a></li>
@@ -307,6 +309,13 @@ obj : MAX(a)
 EQUATIONS
 a = R_GLC + -2*R_AC + 3*R_BIOMASS
 </pre>
+
+
+					<p>
+						This format is close to existing file formats like the <a
+							href="http://lpsolve.sourceforge.net/5.5/CPLEX-format.htm">LP
+							file format</a> used by the solver CPLEX.
+					</p>
 
 					<h4>Example</h4>
 
@@ -1191,8 +1200,9 @@ Flux1	Flux2	Objective
 						experimental values are the closest to the pareto surface.</p>
 
 
-					<p>The pareto surface is the surface in which all points are pareto optimal. This means that to increase the value of
-					an objective, you must decrease another.</p>
+					<p>The pareto surface is the surface in which all points are
+						pareto optimal. This means that to increase the value of an
+						objective, you must decrease another.</p>
 
 					<p>In this analysis, the objective function of the condition
 						file is optional and ignored if present.</p>
