@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   name=""
+   repos="https://svn.code.sf.net/p/parsebionet/code"
+   revision="468"
+   last-author="lmarmiesse"
+   url="https://svn.code.sf.net/p/parsebionet/code/trunk/doc/flexconflux/site/javadoc/parsebionet/applications/flux"
+   committed-rev="468"
+   kind="dir"
+   committed-date="2013-06-18T11:41:18.376000Z"/>
+<entry
+   name="flexflux"
+   kind="dir"/>
+</wc-entries>

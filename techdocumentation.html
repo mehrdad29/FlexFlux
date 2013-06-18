@@ -85,9 +85,26 @@ body {
 					data-offset-top="240">
 					<li><a href="#newMethod"><i class="icon-chevron-right"></i>
 							Add a new FBA based method</a></li>
+					<ul>
+						<li><a href="#main"><i class="icon-chevron-right"></i>
+								The Main class</a></li>
+						<li><a href="#ana"><i class="icon-chevron-right"></i> The
+								classes for the analysis</a></li>
+						<li><a href="#multi"><i class="icon-chevron-right"></i>
+								Multithreading</a></li>
+					</ul>
+
+					
+
 					<li><a href="#newSolver"><i class="icon-chevron-right"></i>
 							Add a new solver</a></li>
 
+					<ul>
+						<li><a href="#bind"><i class="icon-chevron-right"></i> Subclass of Bind</a></li>
+						<li><a href="#fact"><i class="icon-chevron-right"></i> The
+								factories</a></li>
+						
+					</ul>
 
 				</ul>
 			</div>
@@ -100,7 +117,7 @@ body {
 
 
 				<p>
-					See the <a href="./javadoc/index.html">Javadoc</a> for details
+					See the <a href="./javadoc/index.html">Javadoc</a> for more details
 					about all classes, methods and parameters.
 				</p>
 
@@ -108,9 +125,13 @@ body {
 				<section id="newMethod">
 					<h2>Add a new FBA based method</h2>
 
+					<h3 id="main">The Main class</h3>
+
 					<p>The first thing to do when creating a new FBA based method
 						is to create a new class in the package
 						parsebionet.applications.flux.flexflux</p>
+
+					<p>This class has to be a main class.</p>
 
 					<p>
 						Arguments are handled by the Java class library <a
@@ -154,6 +175,8 @@ if (!f.outName.equals("")) {
 					<p>To be faster, you can just copy and paste an existing class
 						(like FlexFluxFBA), change the arguments, the name of your method
 						and make other potential changes.
+					<h3 id="ana">The classes for the analysis</h3>
+
 					<p>All classes representing analysis extend the class Analysis
 						and all analysis result classes extend the class AnalysisResult.</p>
 
@@ -172,19 +195,165 @@ if (!f.outName.equals("")) {
 						method creates and returns your YourAnalysisResult object.</p>
 
 
-					<p>YourAnalysisResult contains all the data calculated by your analysis and must overwrite at least 
-				two methods : 
-				<ul>
-				<li>writeToFile(String path)
-				
-				</ul>
-				
-				Threads
-				
-				
+					<p>YourAnalysisResult contains all the data calculated by your
+						analysis and must overwrite at least two methods :
+					<ul>
+						<li>writeToFile(String path) : this must write all important
+							information in the file specified by the path.
+						<li>plot() : this method has to generate a graphical
+							representation of the calculated data.
+
+							<p>
+								For simple plots with tables FlexFlux uses <a
+									href="http://en.wikipedia.org/wiki/Swing_(Java)">Java Swing</a>.
+								For 2D plots it uses <a href="http://www.jfree.org/jfreechart/">JFreeChart</a>
+								and for 3D plots <a href="https://code.google.com/p/jmathplot/">JMathPlot</a>.
+							</p>
+							<p>This libraries are included in FlexFlux.</p>
+					</ul>
+
+
+					<h3 id="multi">Multithreading</h3>
+
+					<p>If you want to use multithrading, you must create a class
+						that extends ResolveThread. Your threads have to be created in the
+						runAnalysis() of your YourAnalysis class.</p>
+
+					<p>Threads are crated with a copy of the original Bind object.
+						For the right Bind object to be created, you must use the
+						ThreadFactory to create your thread. This will create the right
+						Bind object.</p>
+					<p>In order to do that, you must add a method in the
+						ThreadFactory class and implement it in all it's subclasses (one
+						class per solver).</p>
+
+					<p>Example :</p>
+
+					<p>In the ThreadFactory class :</p>
+					<pre class="prettyprint linenums">
+public abstract YourThread makeYourThread(boolean interactionInSolver);					
+					</pre>
+
+
+					<p>And in, for example, the ThreadFactoryGLPK class</p>
+					<pre class="prettyprint linenums">public YourThread makeYourThread(boolean interactionInSolver) {
+
+	Bind bind = new GLPKBind(constraints, simpleConstraints, intNet,
+			bioNet, interactionInSolver);
+
+	return new YourThread(bind);
+}</pre>
+
+
+
+
+
 				</section>
 				<section id="newSolver">
 					<h2>Add a new solver</h2>
+
+					<h3 id="bind">Create a subclass of Bind</h3>
+
+					<p>First, you must create a new class which extends Bind. This
+						class will translate all problem's data into objects that your
+						solver will understand.</p>
+
+					<p>Your have to implement the following methods :</p>
+					<ul>
+						<li>public void init() : This methods sets parameters for
+							your solver and creates the right factories (see next section).
+						<li>public void entitiesToSolverVars() : Transforms solver
+							entities into variables for the solver.
+						<li>public void makeSolverConstraint(Constraint constraint,
+							List&lt;Object&gt; toRemoveFromModel, Map&lt;String, double[]&gt;
+							oldBounds) : Creates a constraint for the solver.
+						<li>protected void interactionsToSolverConstraints(
+							List&lt;Interaction&gt; interactions) : Only used if your solver
+							can transfrom interactions into constraints.
+						<li>protected void deleteConstraints(List&lt;Object&gt;
+							constraints) : deletes constraints.
+						<li>public void makeSolverObjective() : Transforms the
+							problem's objective into a solver objective.
+						<li>public void changeObjVarValue(BioEntity e, double d) :
+							Changes the coefficient of an entity in the objective function.
+						<li>public void setObjSense(boolean maximize) : Sets the sens
+							of the objective (minimizes or maximizes).
+						<li>protected void clear() : clears the solver's model.
+						<li>public boolean isMIP() : Returns if the model is a Mixed
+							Integer Programming problem.
+						<li>protected void changeVarBounds(String entity, double[]
+							bounds) : Change the lower and upper bound of a solver variable.
+
+
+
+
+
+
+						
+						<li>protected DoubleResult go(boolean saveResults) : Solves
+							the problem. This method creats a DoubleResult object containing
+							the result for the objective function and a flag that says if the
+							problem was feasible or not.
+						<li>public void end() : Deletes the problem.
+					</ul>
+
+
+					<h3 id="fact">The factories</h3>
+
+					<h4>Thread factory</h4>
+
+					<p>Some analysis are using threads to run faster. Those threads
+						need to copy the original Bind object.</p>
+					<p>To let the thread know what kind of Bind object they must
+						create, your original bind has an attribute called threadFactory</p>
+
+					<p>You have to create a new ThreadFactoryYourSolver class that
+						extends the ThreadFactory class and that creates the right Bind
+						objects.</p>
+
+
+					<p>For example in the class ThreadFactoryYourSolver :</p>
+
+					<pre class="prettyprint linenums">
+public ThreadFVA makeFVAThread(boolean interactionInSolver,Queue<BioEntity> ents, Queue<BioEntity> entsCopy, FVAResult result) {
+
+	Bind bind = new YourSolverBind(constraints, simpleConstraints, intNet,bioNet, interactionInSolver);
+
+	return new ThreadFVA(bind, ents, entsCopy, result);
+}				
+					
+					
+					
+					
+					
+					</pre>
+
+					<p>In the init() function of your YourSolverBind class you must
+						add :</p>
+
+					<pre class="prettyprint linenums">this.threadFactory = new ThreadFactoryYourSolver(constraints,simpleConstraints, intNet);</pre>
+
+
+					<h4>Interaction facroty and Operation factory</h4>
+
+					<p>Depending on your solver there are two cases :</p>
+					<ol>
+						<li><p>Your solver does not support interactions.</p>
+
+							<p>You have nothing more to do than add these two lines in
+								the init() function of your YourSolverBind class :</p> <pre
+								class="prettyprint linenums">this.operationFactory = new OperationFactory();
+this.relationFactory = new RelationFactory();</pre></li>
+
+
+						<li><p>Your solver supports interactions and you make to
+								make use of it.</p>
+
+
+							<p>You have a lot of work to do :/</p>
+					</ol>
+
+
 				</section>
 			</div>
 
