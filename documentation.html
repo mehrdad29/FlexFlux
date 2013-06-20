@@ -95,6 +95,8 @@ body {
 								Interaction file</a></li>
 						<li><a href="#keywords"><i class="icon-chevron-right"></i>
 								Key words</a></li>
+						<li><a href="#lpmip"><i class="icon-chevron-right"></i>
+								LP vs MIP</a></li>
 					</ul>
 
 					<li><a href="#analysis"><i class="icon-chevron-right"></i>
@@ -155,8 +157,8 @@ body {
 					<p>FlexFlux works by taking as an input three different files :</p>
 
 					<ul>
-						<li>A file describing the metabolic network (SBML or
-							tabulated file).</li>
+						<li>A file describing the metabolic network (SBML file
+							format).</li>
 						<li>A condition file containing the objective function as
 							well as constraints concerning the values of variables.</li>
 						<li>An interaction file containing logical constraints that
@@ -204,8 +206,8 @@ body {
 
 					<h4>Nested objective functions</h4>
 
-					<p>Multiple objective function can be written. In this case,
-						all objective function (except for the last one), will be
+					<p>Multiple objective functions can be written. In this case,
+						all objective functions (except for the last one), will be
 						considered as constraints : the optimal value will be fixed (with
 						a percentage of liberty than can be specified), before starting
 						the actual analysis.</p>
@@ -431,8 +433,8 @@ IF[A AND B]THEN[C]
 						</li>
 						<li>Interactions can be treated by the solver itself. In this
 							case there won't be any inconsistencie and a large interaction
-							network can be used. However, this mode is slower and isn't
-							available for all solvers.
+							network can be used. However, this mode is slower (because the
+							problem becomes a MIP <a href="#lpmip">see here</a>) and isn't available for all solvers.
 
 							<p>If the solver you use supports it and if you don't have a
 								problem with calculation times, we advise you to use this mode.</p>
@@ -489,6 +491,33 @@ IF[lacZ>0.02]THEN[R_EX_lcts_e_=-3]</pre>
 
 					<p>This interaction means that if the reaction R_glc is not set
 						to zero by its genes, then its value must be 1.5</p>
+
+
+
+					<h3 id="lpmip">LP vs MIP</h3>
+
+
+					<p>Depending on the parameters you choose and the type of your
+						variables, the problem the solver has to solve can be either a LP
+						or a MIP.</p>
+
+					<p>The difference is that LP models only have continuous (real)
+						variables whereas MIP model have integer or binary variables.</p>
+
+					<p>MIPs arelonger to solve.</p>
+
+
+					<p>There are two ways to have an MIP on Flexflux :</p>
+					<ul>
+						<li>You add an integer or a binary variable in the condition
+							file.</li>
+						<li>You use a solvers that supports interactions (like
+							CPLEX), you choose to include the interactions in the solver and
+							your model has interactions (GPRs or interactions in the
+							interaction file).
+					</ul>
+
+
 				</section>
 				<section id="analysis">
 					<h2>Details of the analyses</h2>
@@ -502,9 +531,9 @@ IF[lacZ>0.02]THEN[R_EX_lcts_e_=-3]</pre>
 
 					<h3 id="fba">Simple FBA</h3>
 
-					Computes a simple FBA analysis and returns the value of the
-					optimized objective function as well as all variable values.
-					Variable values can represent only one solution amongst many.
+					Computes a simple FBA and returns the value of the optimized
+					objective function as well as all variable values. Variable values
+					can represent only one solution amongst many.
 
 					<h4>Command-line arguments</h4>
 					<ul>
@@ -581,9 +610,9 @@ R_EX_o2_e	-21.799493
 					<h3 id="fva">Flux Variability Analyses : FVA</h3>
 
 
-					<p>An FVA analysis consists in getting the optimal value for
-						the objective function, setting this value as a constraint and,
-						given a list of entities, minimize and maximize their values. This
+					<p>An FVA consists in getting the optimal value for the
+						objective function, setting this value as a constraint and, given
+						a list of entities, minimize and maximize their values. This
 						analysis returns the objective value, and the minimum and maximum
 						value for each entity desired.</p>
 
@@ -600,8 +629,8 @@ R_EX_o2_e	-21.799493
 						<li>-nointsolv : [OPTIONAL, default = false]Interactions are
 							not in the solver
 						<li>-e String : [OPTIONAL]Biological entities to perform the
-							FVA analysis on (Space-separated list of entities, example : "R1
-							R2 G1 G2"). If empty, FVA is done on all reactions
+							FVA on (Space-separated list of entities, example : "R1 R2 G1
+							G2"). If empty, FVA is done on all reactions
 						<li>-n Integer : [OPTIONAL, default = number of available
 							processors]Number of threads
 						<li>-out String : [OPTIONAL]Output file name
